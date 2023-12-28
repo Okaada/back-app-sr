@@ -1,33 +1,23 @@
-using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
+using back_app_sr_Application;
+using back_app_sr_Application.User.Business.Interface;
+using back_app_sr_Application.User.Business.Service;
+using back_app_sr.Infra;
+using back_app_sr.Infra.Repository.Interfaces;
+using back_app_sr.Infra.Repository.Service;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddInfra();
+builder.Services.AddApplication();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-var app = builder.Build();
+builder.Services.AddControllers();
 
-builder.Services.AddAuthentication(opt =>
-{
-    opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(opt =>
-{
-    opt.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = "sua-issuing-authority", // Id que remete a app validar dps
-        ValidAudience = "sua-angular-app", // angular app validar dps
-        IssuerSigningKey = new SymmetricSecurityKey("sua-chave-secreta"u8.ToArray()) //utilizar secret aqui
-    };
-});
-// Configure the HTTP request pipeline.
+var app = builder.Build();
+app.MapControllers();   
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -35,7 +25,5 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseAuthentication();
-app.UseAuthorization();
 app.Run();
 return;

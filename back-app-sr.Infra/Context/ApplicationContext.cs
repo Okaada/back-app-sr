@@ -10,11 +10,11 @@ public class ApplicationContext(DbContextOptions<ApplicationContext> options) : 
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationContext).Assembly);
     }
 
-    public DbSet<Delivery> Deliveries { get; set; }
+    public DbSet<DeliveryModel> Deliveries { get; set; }
     public DbSet<Additional> Additionals { get; set; }
     public DbSet<Item> Items { get; set; }
-    public DbSet<Tab> Tabs { get; set; }
-    public DbSet<Order> Orders { get; set; }
+    public DbSet<TabModel> Tabs { get; set; }
+    public DbSet<OrderModel> Orders { get; set; }
     public DbSet<TabPayment> TabPayments { get; set; }
     public DbSet<QuickSale> QuickSales { get; set; }
     public DbSet<QuickSaleItem> QuickSaleItems { get; set; }

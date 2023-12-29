@@ -18,13 +18,18 @@ public class Repository<T>  : IRepository<T> where T : class
         return await ApplicationContext.Set<T>().FindAsync(id);
     }
 
+    public async Task<T?> GetById(Guid id)
+    {
+        return await ApplicationContext.Set<T>().FindAsync(id);
+    }
+
     public async Task<IEnumerable<T>> GetAll()
     {
         return await ApplicationContext.Set<T>().ToListAsync();
     }
 
     public async Task Add(T entity)
-{
+    {  
         await ApplicationContext.Set<T>().AddAsync(entity);
     }
 

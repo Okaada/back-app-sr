@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace back_app_sr.Infra.EntityConfiguration;
 
-public class TabConfiguration : IEntityTypeConfiguration<Tab>
+public class TabConfiguration : IEntityTypeConfiguration<TabModel>
 {
-    public void Configure(EntityTypeBuilder<Tab> builder)
+    public void Configure(EntityTypeBuilder<TabModel> builder)
     {
         // Chave primária
         builder.HasKey(t => t.TabId);
@@ -34,17 +34,17 @@ public class TabConfiguration : IEntityTypeConfiguration<Tab>
 
         // Configurações para a propriedade Orders
         builder.HasMany(t => t.Orders)
-            .WithOne(order => order.Tab)
+            .WithOne(order => order.TabModel)
             .HasForeignKey(order => order.TabId);
         
         // Configurações para a propriedade TabPayment
         builder.HasMany(t => t.Payments)
-            .WithOne(tp => tp.Tab)
+            .WithOne(tp => tp.TabModel)
             .HasForeignKey(tp => tp.TabId);
         
         // Configurações para a propriedade Delivery
-        builder.HasOne(t => t.Delivery)
-            .WithOne(d => d.Tab)
-            .HasForeignKey<Delivery>(d => d.TabId);
+        builder.HasOne(t => t.DeliveryModel)
+            .WithOne(d => d.TabModel)
+            .HasForeignKey<DeliveryModel>(d => d.TabId);
     }
 }

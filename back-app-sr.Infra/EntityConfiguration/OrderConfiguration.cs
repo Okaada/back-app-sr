@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace back_app_sr.Infra.EntityConfiguration;
 
-public class OrderConfiguration : IEntityTypeConfiguration<Order>
+public class OrderConfiguration : IEntityTypeConfiguration<OrderModel>
 {
-    public void Configure(EntityTypeBuilder<Order> builder)
+    public void Configure(EntityTypeBuilder<OrderModel> builder)
     {
         // Chave primária
         builder.HasKey(o => o.OrderId);

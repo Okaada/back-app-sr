@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace back_app_sr.Infra.EntityConfiguration;
 
-public class DeliveryConfiguration : IEntityTypeConfiguration<Delivery>
+public class DeliveryConfiguration : IEntityTypeConfiguration<DeliveryModel>
 {
-    public void Configure(EntityTypeBuilder<Delivery> builder)
+    public void Configure(EntityTypeBuilder<DeliveryModel> builder)
     {
         // Chave primária
         builder.HasKey(d => d.DeliveryId);

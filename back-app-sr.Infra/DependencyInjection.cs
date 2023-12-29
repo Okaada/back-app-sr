@@ -14,7 +14,10 @@ public static class DependencyInjection
             options.UseNpgsql("Host=localhost;Port=5432;Database=RESTfood;Username=postgres;Password=root;"));
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
-
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<ITabRepository, TabRepository>();
+        services.AddScoped<IDeliveryRepository, DeliveryRepository>();
+        services.AddScoped<ITabOrderRepository, TabOrderRepository>();
         return services;
     }
 }

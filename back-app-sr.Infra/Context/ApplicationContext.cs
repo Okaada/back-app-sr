@@ -12,7 +12,7 @@ public class ApplicationContext(DbContextOptions<ApplicationContext> options) : 
 
     public DbSet<DeliveryModel> Deliveries { get; set; }
     public DbSet<Additional> Additionals { get; set; }
-    public DbSet<Item> Items { get; set; }
+    public DbSet<ItemModel> Items { get; set; }
     public DbSet<TabModel> Tabs { get; set; }
     public DbSet<OrderModel> Orders { get; set; }
     public DbSet<TabPayment> TabPayments { get; set; }

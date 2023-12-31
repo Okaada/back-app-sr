@@ -3,14 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace back_app_sr.Domain.Models;
 
-public class Item
+public class ItemModel
 {
     [Key]
     public int ItemId { get; set; }
-    public string Name { get; set; }
-    public decimal Value { get; set; }
+    public string Name { get; private set; }
+    public decimal Value { get; private set; }
 
-    public Item(string name, decimal value)
+    public ItemModel(string name, decimal value)
     {
         Name = name;
         Value = value;

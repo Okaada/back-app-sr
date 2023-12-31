@@ -6,5 +6,5 @@ public class QuickSaleItem
     public QuickSale QuickSale { get; set; }
     public Guid QuickSaleId { get; set; }
     public int ItemId { get; set; }
-    public Item Item { get; set; }
+    public ItemModel Item { get; set; }
 }

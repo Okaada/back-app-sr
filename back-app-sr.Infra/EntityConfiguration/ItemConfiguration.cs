@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace back_app_sr.Infra.EntityConfiguration;
 
-public class ItemConfiguration : IEntityTypeConfiguration<Item>
+public class ItemConfiguration : IEntityTypeConfiguration<ItemModel>
 {
-    public void Configure(EntityTypeBuilder<Item> builder)
+    public void Configure(EntityTypeBuilder<ItemModel> builder)
     {
         // Chave primária
         builder.HasKey(i => i.ItemId);

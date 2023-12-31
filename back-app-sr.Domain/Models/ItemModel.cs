@@ -7,8 +7,8 @@ public class ItemModel
 {
     [Key]
     public int ItemId { get; set; }
-    public string Name { get; set; }
-    public decimal Value { get; set; }
+    public string Name { get; private set; }
+    public decimal Value { get; private set; }
 
     public ItemModel(string name, decimal value)
     {

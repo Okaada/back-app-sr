@@ -8,5 +8,6 @@ public class ItemRepository : Repository<ItemModel>, IItemRepository
 {
     public ItemRepository(ApplicationContext context): base(context)
     {
+        
     }
 }

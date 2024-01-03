@@ -36,7 +36,7 @@ public class TabService : ITabService
         
         _uow.Commit();
 
-        return new TabCreationViewModel();
+        return _mapper.Map<TabCreationViewModel>(newTab);
     }
 
     public async Task<IEnumerable<TabViewModel>> GetAllTabs()

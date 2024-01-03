@@ -1,8 +1,6 @@
 using System.Net;
-using back_app_sr_Application.Tab.Command;
 using back_app_sr_Application.Tab.Command.CreateTab;
 using back_app_sr_Application.Tab.Command.InsertOrderCommand;
-using back_app_sr_Application.Tab.Query;
 using back_app_sr_Application.Tab.Query.GetAllTabs;
 using back_app_sr_Application.Tab.Query.GetTabsById;
 using MediatR;
@@ -44,7 +42,7 @@ public class TabController : ControllerBase
     [HttpGet("{id}")]
     [ProducesResponseType<int>((int)HttpStatusCode.OK)]
     [ProducesResponseType<int>((int)HttpStatusCode.NoContent)]
-    public async Task<IActionResult> GetTabById(Guid id)
+    public async Task<IActionResult> GetTabById([FromRoute] Guid id)
     {
         var result = await _mediator.Send(new GetTabQuery {TabId = id});
         if (result.TabId == Guid.Empty)

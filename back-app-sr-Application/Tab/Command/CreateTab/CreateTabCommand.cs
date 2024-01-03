@@ -9,7 +9,7 @@ public class CreateTabCommand : IRequest<TabCreationViewModel>
 {
 
     [JsonProperty("table_number")]
-    public int TableNumer { get; set; }
+    public int TableNumber { get; set; }
     [JsonProperty("delivery")]
     public DeliveryDTO? Delivery { get; set; }
     [JsonProperty("tab_type")]

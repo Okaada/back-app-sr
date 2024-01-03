@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "back-app-sr.Domain", "back-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "back-app-sr.Infra", "back-app-sr.Infra\back-app-sr.Infra.csproj", "{3975B713-02F8-48D4-BCDC-9A4CFECD5B40}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "back-app-sr.Tests", "back-app-sr.Tests\back-app-sr.Tests.csproj", "{9FFA09C8-EB84-450B-B76F-E24DB6486E85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{3975B713-02F8-48D4-BCDC-9A4CFECD5B40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3975B713-02F8-48D4-BCDC-9A4CFECD5B40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3975B713-02F8-48D4-BCDC-9A4CFECD5B40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FFA09C8-EB84-450B-B76F-E24DB6486E85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FFA09C8-EB84-450B-B76F-E24DB6486E85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FFA09C8-EB84-450B-B76F-E24DB6486E85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FFA09C8-EB84-450B-B76F-E24DB6486E85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

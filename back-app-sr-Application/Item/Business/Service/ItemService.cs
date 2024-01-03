@@ -19,14 +19,14 @@ public class ItemService : IItemService
         _mapper = mapper;
     }
     
-    public ItemModel CreateItem(string name, decimal value)
+    public async Task<string> CreateItem(string name, decimal value)
     {
         var item = new ItemModel(name, value);
 
         _itemRepository.Add(item);
         _uow.Commit();
         
-        return item;
+        return $"Item criado com sucesso. '{item.Name}' , R$'{item.Value}'";
     }
     
     public async Task<IEnumerable<ItemViewModel>> GetAllItems()

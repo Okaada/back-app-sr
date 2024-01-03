@@ -21,8 +21,8 @@ public class UserService : IUserService
     {
         //hash password
         byte[] salt = RandomNumberGenerator.GetBytes(128 / 8); // divide by 8 to convert bits to bytes
-        //create user
         
+        //create user
         string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
             password: password!,
             salt: salt,
@@ -31,6 +31,7 @@ public class UserService : IUserService
             numBytesRequested: 256 / 8));
 
         var user = new UserModel(name, hashed, "user", email);
+        
         //save user
         _userRepository.Add(user);
         _uow.Commit();

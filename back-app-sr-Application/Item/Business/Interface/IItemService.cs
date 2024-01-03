@@ -4,7 +4,7 @@ namespace back_app_sr_Application.Item.Business.Interface;
 
 public interface IItemService
 {
-    ItemModel CreateItem(string name, decimal value);
+    Task<string> CreateItem(string name, decimal value);
     Task<IEnumerable<ItemViewModel>> GetAllItems();
     Task<ItemViewModel> GetItemById(int itemId);
 }

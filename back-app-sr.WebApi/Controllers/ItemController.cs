@@ -42,7 +42,7 @@ public class ItemController : ControllerBase
     [HttpGet("{id}")]
     [ProducesResponseType<int>((int)HttpStatusCode.OK)]
     [ProducesResponseType<int>((int)HttpStatusCode.NoContent)]
-    public async Task<IActionResult> GetItemById(int id)
+    public async Task<IActionResult> GetItemById([FromRoute] int id)
     {
         var result = await _mediator.Send(new GetItemQuery {ItemId = id});
         if (result == null)

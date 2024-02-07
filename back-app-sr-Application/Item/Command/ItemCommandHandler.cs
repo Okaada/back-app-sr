@@ -15,7 +15,7 @@ public class ItemCommandHandler : IRequestHandler<ItemCommand, string>
     public Task<string> Handle(ItemCommand request, CancellationToken cancellationToken)
     {
 
-        var result = _itemService.CreateItem(request.Name, request.Value);
+        var result = _itemService.CreateItem(request.Name, request.Value, request.Description, request.CategoryItemId);
         return Task.FromResult("Item criado com sucesso!");
     }
 }

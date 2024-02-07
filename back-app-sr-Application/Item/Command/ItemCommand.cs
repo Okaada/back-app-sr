@@ -9,4 +9,8 @@ public class ItemCommand : IRequest<string>
     public string Name { get; set; } = string.Empty;
     [JsonProperty("value")]
     public decimal Value { get; set; }
+    [JsonProperty("description")]
+    public string Description { get; set; }
+    [JsonProperty("categoryItemId")]
+    public int CategoryItemId { get; set; }
 }

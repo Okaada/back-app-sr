@@ -11,6 +11,7 @@ public class ItemService : IItemService
     private readonly IItemRepository _itemRepository;
     private readonly IUnitOfWork _uow;
     private readonly IMapper _mapper;
+    private IItemService _itemServiceImplementation;
 
     public ItemService(IItemRepository itemRepository, IUnitOfWork uow, IMapper mapper)
     {
@@ -19,14 +20,14 @@ public class ItemService : IItemService
         _mapper = mapper;
     }
     
-    public async Task<string> CreateItem(string name, decimal value)
+    public async Task<string> CreateItem(string name, decimal value, string description, int categoryItemId)
     {
-        var item = new ItemModel(name, value);
+        var item = new ItemModel(name, value, description, categoryItemId);
 
         _itemRepository.Add(item);
         _uow.Commit();
         
-        return $"Item criado com sucesso. '{item.Name}' , R$'{item.Value}'";
+        return $"Item criado com sucesso. Item: '{item.Name}' , Valor: R$'{item.Value}', Descrição: '{item.Description}'";
     }
     
     public async Task<IEnumerable<ItemViewModel>> GetAllItems()

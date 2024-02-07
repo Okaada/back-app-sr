@@ -16,6 +16,7 @@ public class UserController : ControllerBase
         _mediator = mediator;
     }
     
+    
     [HttpPost]
     [ProducesResponseType<int>((int)HttpStatusCode.Created)]
     [ProducesResponseType<int>((int)HttpStatusCode.BadRequest)]

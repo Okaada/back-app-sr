@@ -25,6 +25,9 @@ public class ItemConfiguration : IEntityTypeConfiguration<ItemModel>
             .IsRequired()
             .HasColumnType("decimal(18,2)");
         
-
+        // Configuração para a propriedade Categoria
+        builder.HasOne(i => i.Category)
+            .WithMany(a => a.Items)
+            .HasForeignKey(d => d.CategoryItemId);
     }
 }

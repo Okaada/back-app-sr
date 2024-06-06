@@ -1,8 +1,9 @@
 using System.Security.Cryptography;
 using back_app_sr_Application.User.Business.Interface;
+using back_app_sr_Application.User.DTO;
 using back_app_sr.Domain.Models;
 using back_app_sr.Infra.Repository.Interfaces;
-using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using Microsoft.AspNetCore.Identity;
 
 namespace back_app_sr_Application.User.Business.Service;
 
@@ -20,21 +21,23 @@ public class UserService : IUserService
     public UserModel CreateUser(string name, string password, string email)
     {
         //hash password
-        byte[] salt = RandomNumberGenerator.GetBytes(128 / 8); // divide by 8 to convert bits to bytes
-        
-        //create user
-        string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-            password: password!,
-            salt: salt,
-            prf: KeyDerivationPrf.HMACSHA256,
-            iterationCount: 100000,
-            numBytesRequested: 256 / 8));
 
-        var user = new UserModel(name, hashed, "user", email);
+        var user = new UserModel(Guid.NewGuid(), name, UserModel.HashPassword(password), "user", email);
         
-        //save user
         _userRepository.Add(user);
         _uow.Commit();
         return user;
     }
+
+    public async Task<UserDTO> Login(string email, string password)
+    {
+        var user = await _userRepository.GetUserByEmail(email);
+        if(user.VerifyPassword(password))
+            return new UserDTO(user.Email, user.Role);
+
+        throw new Exception("Invalid password");
+    }
+    
+    
+    
 }

@@ -1,7 +1,7 @@
 using MediatR;
 using Newtonsoft.Json;
 
-namespace back_app_sr_Application.User.Command;
+namespace back_app_sr_Application.User.Command.CreateUser;
 
 public class UserCommand : IRequest<string>
 {

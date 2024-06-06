@@ -1,10 +1,13 @@
 using System.Net;
 using back_app_sr_Application.User.Command;
+using back_app_sr_Application.User.Command.CreateUser;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace back_app_sr.WebApi.Controllers;
+namespace back_app_sr.WebApi.Controllers; 
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class UserController : ControllerBase
@@ -22,6 +25,6 @@ public class UserController : ControllerBase
     public async Task<IActionResult> CreateUser([FromBody] UserCommand userRequest)
     {
         var result = await _mediator.Send(userRequest);
-        return Created("", result);
+        return Created("/users", result);
     }
 }

@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Identity;
+
 namespace back_app_sr.Domain.Models;
 
 public class UserModel
@@ -10,10 +12,31 @@ public class UserModel
 
     public UserModel(string username, string password, string role, string email)
     {
-        UserId = Guid.NewGuid();
         Username = username;
         Password = password;
         Role = role;
         Email = email;
+    }   
+    
+    public UserModel(Guid guid, string username, string password, string role, string email)
+    {
+        UserId = guid;
+        Username = username;
+        Password = password;
+        Role = role;
+        Email = email;
+    }
+
+    public static string HashPassword(string password)
+    {
+        var hasher = new PasswordHasher<UserModel>();
+        return hasher.HashPassword( null , password);
+    }
+
+    public bool VerifyPassword(string password)
+    {
+        var hasher = new PasswordHasher<UserModel>();
+        var result = hasher.VerifyHashedPassword(null, Password, password);
+        return result == PasswordVerificationResult.Success;
     }
 }

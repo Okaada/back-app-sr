@@ -1,11 +1,11 @@
 using AutoMapper;
-using back_app_sr_Application.Tab.Business.Interface;
 using back_app_sr_Application.Tab.DTO;
+using back_app_sr_Application.Tab.Service.Interface;
 using back_app_sr_Application.Tab.ViewModel;
 using back_app_sr.Domain.Models;
 using back_app_sr.Infra.Repository.Interfaces;
 
-namespace back_app_sr_Application.Tab.Business.Service;
+namespace back_app_sr_Application.Tab.Service.Implementation;
 
 public class TabService : ITabService
 {

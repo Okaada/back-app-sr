@@ -1,9 +1,9 @@
-using back_app_sr_Application.Item.Business.Interface;
-using back_app_sr_Application.Item.Business.Service;
-using back_app_sr_Application.Tab.Business.Interface;
-using back_app_sr_Application.Tab.Business.Service;
-using back_app_sr_Application.User.Business.Interface;
-using back_app_sr_Application.User.Business.Service;
+using back_app_sr_Application.Item.Service.Implementation;
+using back_app_sr_Application.Item.Service.Interface;
+using back_app_sr_Application.Tab.Service.Implementation;
+using back_app_sr_Application.Tab.Service.Interface;
+using back_app_sr_Application.User.Service.Implementation;
+using back_app_sr_Application.User.Service.Interface;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace back_app_sr_Application;

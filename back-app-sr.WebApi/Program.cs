@@ -1,7 +1,5 @@
 using back_app_sr_Application;
 using back_app_sr.Infra;
-using back_app_sr.Infra.Repository.Interfaces;
-using back_app_sr.Infra.Repository.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddInfra();
@@ -20,4 +18,3 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.Run();
-return;

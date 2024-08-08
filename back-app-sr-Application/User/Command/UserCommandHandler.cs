@@ -1,4 +1,4 @@
-using back_app_sr_Application.User.Business.Interface;
+using back_app_sr_Application.User.Service.Interface;
 using MediatR;
 
 namespace back_app_sr_Application.User.Command;

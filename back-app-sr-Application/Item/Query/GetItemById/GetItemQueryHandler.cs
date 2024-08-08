@@ -1,5 +1,4 @@
-﻿using back_app_sr_Application.Item.Business.Interface;
-using back_app_sr_Application.Item.Query.GetAllItems;
+﻿using back_app_sr_Application.Item.Service.Interface;
 using back_app_sr_Application.Item.ViewModel;
 using MediatR;
 

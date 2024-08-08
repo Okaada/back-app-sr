@@ -1,6 +1,7 @@
 ﻿using back_app_sr_Application.Item.ViewModel;
 using back_app_sr.Domain.Models;
-namespace back_app_sr_Application.Item.Business.Interface;
+
+namespace back_app_sr_Application.Item.Service.Interface;
 
 public interface IItemService
 {

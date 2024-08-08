@@ -1,5 +1,4 @@
-using back_app_sr_Application.Tab.Business.Interface;
-using back_app_sr_Application.Tab.ViewModel;
+using back_app_sr_Application.Tab.Service.Interface;
 using MediatR;
 
 namespace back_app_sr_Application.Tab.Command.InsertOrderCommand;

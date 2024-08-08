@@ -1,4 +1,4 @@
-using back_app_sr_Application.Tab.Business.Interface;
+using back_app_sr_Application.Tab.Service.Interface;
 using back_app_sr_Application.Tab.ViewModel;
 using FluentValidation;
 using MediatR;

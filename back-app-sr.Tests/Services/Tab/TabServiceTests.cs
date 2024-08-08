@@ -1,7 +1,7 @@
 using AutoMapper;
-using back_app_sr_Application.Tab.Business.Interface;
-using back_app_sr_Application.Tab.Business.Service;
 using back_app_sr_Application.Tab.Mappings;
+using back_app_sr_Application.Tab.Service.Implementation;
+using back_app_sr_Application.Tab.Service.Interface;
 using back_app_sr_Application.Tab.ViewModel;
 using back_app_sr.Domain.Models;
 using back_app_sr.Infra.Repository.Interfaces;

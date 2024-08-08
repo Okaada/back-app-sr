@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using back_app_sr_Application.Item.Business.Interface;
+using back_app_sr_Application.Item.Service.Interface;
 using back_app_sr_Application.Item.ViewModel;
 using back_app_sr.Domain.Models;
 using back_app_sr.Infra.Repository.Interfaces;
 
-namespace back_app_sr_Application.Item.Business.Service;
+namespace back_app_sr_Application.Item.Service.Implementation;
 
 public class ItemService : IItemService
 {

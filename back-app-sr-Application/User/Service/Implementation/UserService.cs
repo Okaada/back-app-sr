@@ -1,10 +1,10 @@
 using System.Security.Cryptography;
-using back_app_sr_Application.User.Business.Interface;
+using back_app_sr_Application.User.Service.Interface;
 using back_app_sr.Domain.Models;
 using back_app_sr.Infra.Repository.Interfaces;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
-namespace back_app_sr_Application.User.Business.Service;
+namespace back_app_sr_Application.User.Service.Implementation;
 
 public class UserService : IUserService
 {

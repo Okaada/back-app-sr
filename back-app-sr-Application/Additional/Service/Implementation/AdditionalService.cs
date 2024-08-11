@@ -39,6 +39,7 @@ public class AdditionalService : IAdditionalService
         return _mapper.Map<AdditionalViewModel>(await _additionalRepository.GetById(additionalId));
     }
 
+    
     public async Task<bool> DeleteAdditional(int additionalId)
     {
         var additional = await _additionalRepository.GetById(additionalId);
@@ -46,6 +47,21 @@ public class AdditionalService : IAdditionalService
             return false;
         
         _additionalRepository.Delete(additional);
+        _uow.Commit();
+
+        return true;
+    }
+    
+    public async Task<bool> UpdateAdditional(int additionalId, string name, decimal value)
+    {
+        var additional = await _additionalRepository.GetById(additionalId);
+        if (additional == null)
+            return false;
+        
+        additional.Name = name;
+        additional.Value = value;
+        
+        _additionalRepository.Update(additional);
         _uow.Commit();
 
         return true;

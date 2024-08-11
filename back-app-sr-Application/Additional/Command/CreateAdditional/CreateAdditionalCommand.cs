@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace back_app_sr_Application.Additional.Command.CreateAdditional;
 
-public class AdditionalCommand : IRequest<string>
+public class CreateAdditionalCommand : IRequest<string>
 {
     [JsonProperty("name")]
     public string Name { get; set; } = string.Empty;

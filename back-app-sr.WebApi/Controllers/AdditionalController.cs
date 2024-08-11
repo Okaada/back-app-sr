@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using back_app_sr_Application.Additional.Command.CreateAdditional;
 using back_app_sr_Application.Additional.Command.DeleteAdditional;
+using back_app_sr_Application.Additional.Command.UpdateAdditional;
 using back_app_sr_Application.Additional.Query.GetAdditionalById;
 using back_app_sr_Application.Additional.Query.GetAllAdditionals;
 using MediatR;
@@ -22,10 +23,10 @@ public class AdditionalController : ControllerBase
     [HttpPost]
     [ProducesResponseType<int>((int)HttpStatusCode.Created)]
     [ProducesResponseType<int>((int)HttpStatusCode.BadRequest)]
-    public async Task<IActionResult> CreateAdditional([FromBody] AdditionalCommand additionalRequest)
+    public async Task<IActionResult> CreateAdditional([FromBody] CreateAdditionalCommand createAdditionalRequest)
     {
-        var result = await _mediator.Send(additionalRequest);
-        return Created("/additional", result);
+        var result = await _mediator.Send(createAdditionalRequest);
+        return Created($"/api/additional/{result}", result);
     }
 
     [HttpGet]
@@ -50,6 +51,24 @@ public class AdditionalController : ControllerBase
             return NoContent();
         
         return Ok(result);
+    }
+    
+    [HttpPut("{id}")]
+    [ProducesResponseType((int)HttpStatusCode.OK)]
+    [ProducesResponseType((int)HttpStatusCode.NotFound)]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+    public async Task<IActionResult> UpdateAdditional([FromRoute] int id, [FromBody] UpdateAdditionalCommand updateAdditionalRequest)
+    {
+        if (id != updateAdditionalRequest.AdditionalId)
+        {
+            return BadRequest("ID no URL não corresponde ao ID no corpo da requisição.");
+        }
+
+        var result = await _mediator.Send(updateAdditionalRequest);
+        if (!result)
+            return NotFound();
+
+        return Ok("Adicional atualizado com sucesso!");
     }
     
     [HttpDelete("{id}")]

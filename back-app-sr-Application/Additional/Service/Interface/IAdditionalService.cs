@@ -8,4 +8,5 @@ public interface IAdditionalService
     Task<IEnumerable<AdditionalViewModel>> GetAllAdditionals();
     Task<AdditionalViewModel> GetAdditionalById(int additionalId);
     Task<bool> DeleteAdditional(int additionalId);
+    Task<bool> UpdateAdditional(int additionalId, string name, decimal value);
 }

@@ -11,7 +11,7 @@ public class ApplicationContext(DbContextOptions<ApplicationContext> options) : 
     }
 
     public DbSet<DeliveryModel> Deliveries { get; set; }
-    public DbSet<Additional> Additionals { get; set; }
+    public DbSet<AdditionalModel> Additionals { get; set; }
     public DbSet<ItemModel> Items { get; set; }
     public DbSet<TabModel> Tabs { get; set; }
     public DbSet<OrderModel> Orders { get; set; }

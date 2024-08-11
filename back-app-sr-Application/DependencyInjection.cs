@@ -1,3 +1,5 @@
+using back_app_sr_Application.Additional.Service.Implementation;
+using back_app_sr_Application.Additional.Service.Interface;
 using back_app_sr_Application.Item.Service.Implementation;
 using back_app_sr_Application.Item.Service.Interface;
 using back_app_sr_Application.Tab.Service.Implementation;
@@ -18,6 +20,7 @@ public static class DependencyInjection
         services.AddScoped<ITabService, TabService>();
         services.AddScoped<ITabOrderService, TabOrderService>();
         services.AddScoped<IItemService, ItemService>();
+        services.AddScoped<IAdditionalService, AdditionalService>();
         services.AddAutoMapper(typeof(DependencyInjection).Assembly);
         return services;
 

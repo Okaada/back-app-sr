@@ -1,9 +1,11 @@
 ﻿using back_app_sr_Application.Additional.Service.Interface;
+using back_app_sr_Application.Additional.ViewModel;
 using MediatR;
+using ValidationException = FluentValidation.ValidationException;
 
 namespace back_app_sr_Application.Additional.Command.CreateAdditional;
 
-public class CreateAdditionalCommandHandler : IRequestHandler<CreateAdditionalCommand, string>
+public class CreateAdditionalCommandHandler : IRequestHandler<CreateAdditionalCommand, CreateAdditionalViewModel>
 {
     private readonly IAdditionalService _additionalService;
 
@@ -12,9 +14,15 @@ public class CreateAdditionalCommandHandler : IRequestHandler<CreateAdditionalCo
         _additionalService = additionalService;
     }
 
-    public Task<string> Handle(CreateAdditionalCommand request, CancellationToken cancellationToken)
+    public async Task<CreateAdditionalViewModel> Handle(CreateAdditionalCommand request, CancellationToken cancellationToken)
     {
-        var result = _additionalService.CreateAdditional(request.Name, request.Value);
-        return Task.FromResult("Adicional criado com sucesso!");
+        var validator = new CreateAdditionalValidator();
+        var validation = await validator.ValidateAsync(request, cancellationToken);
+
+        if (!validation.IsValid)
+            throw new ValidationException("Error", validation.Errors);
+
+        var result = await _additionalService.CreateAdditional(request.Name, request.Value);
+        return result;
     }
 }

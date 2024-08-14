@@ -12,5 +12,7 @@ public class AdditionalViewModelMapping : Profile
             .ForMember(dest => dest.AdditionalId,
                 opt => opt.MapFrom(src => src.AdditionalId))
             .ReverseMap();
+        CreateMap<AdditionalModel, CreateAdditionalViewModel>();
+        CreateMap<AdditionalModel, DeleteAdditionalViewModel>();
     }
 }

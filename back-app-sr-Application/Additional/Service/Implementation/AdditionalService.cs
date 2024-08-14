@@ -19,14 +19,14 @@ public class AdditionalService : IAdditionalService
         _mapper = mapper;
     }
 
-    public async Task<string> CreateAdditional(string name, decimal value)
+    public async Task<CreateAdditionalViewModel> CreateAdditional(string name, decimal value)
     {
-        var additional = new AdditionalModel(name, value);
-
-        _additionalRepository.Add(additional);
+        var newAdditional = new AdditionalModel(name, value);
+        await _additionalRepository.Add(newAdditional);
+        
         _uow.Commit();
 
-        return $"Adicional criado com sucesso. '{additional.Name}' , R$ '{additional.Value}'";
+        return _mapper.Map<CreateAdditionalViewModel>(newAdditional);
     }
 
     public async Task<IEnumerable<AdditionalViewModel>> GetAllAdditionals()
@@ -39,17 +39,19 @@ public class AdditionalService : IAdditionalService
         return _mapper.Map<AdditionalViewModel>(await _additionalRepository.GetById(additionalId));
     }
 
-    
-    public async Task<bool> DeleteAdditional(int additionalId)
+
+    public async Task<DeleteAdditionalViewModel> DeleteAdditional(int additionalId)
     {
         var additional = await _additionalRepository.GetById(additionalId);
         if (additional == null)
-            return false;
+            throw new Exception("Adicional não encontrado");
+
+        var deleteAdditionalViewModel = _mapper.Map<DeleteAdditionalViewModel>(additional); 
         
         _additionalRepository.Delete(additional);
         _uow.Commit();
 
-        return true;
+        return deleteAdditionalViewModel;
     }
     
     public async Task<bool> UpdateAdditional(int additionalId, string name, decimal value)

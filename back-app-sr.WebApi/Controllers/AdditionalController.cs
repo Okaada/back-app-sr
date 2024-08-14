@@ -77,9 +77,7 @@ public class AdditionalController : ControllerBase
     public async Task<IActionResult> DeleteAdditional([FromRoute] int id)
     {
         var result = await _mediator.Send(new DeleteAdditionalCommand { AdditionalId = id });
-        if (!result)
-            return NotFound();
 
-        return Ok("Adicional deletado com sucesso!");
+        return Ok(result);
     }
 }

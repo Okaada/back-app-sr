@@ -9,6 +9,7 @@ public class UpdateAdditionalCommand : IRequest<bool>
     public int AdditionalId { get; set; }
     [JsonProperty("name")]
     public string Name { get; set; } = string.Empty;
-    [JsonProperty("value")]
-    public decimal Value { get; set; }
+
+    [JsonProperty("value")] 
+    public decimal Value { get; set; } = 0;
 }

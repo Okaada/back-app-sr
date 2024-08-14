@@ -65,10 +65,8 @@ public class AdditionalController : ControllerBase
         }
 
         var result = await _mediator.Send(updateAdditionalRequest);
-        if (!result)
-            return NotFound();
 
-        return Ok("Adicional atualizado com sucesso!");
+        return Ok(result);
     }
     
     [HttpDelete("{id}")]

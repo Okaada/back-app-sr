@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using back_app_sr_Application.Additional.Command.UpdateAdditional;
 using back_app_sr_Application.Additional.ViewModel;
 using back_app_sr.Domain.Models;
 
@@ -14,5 +15,6 @@ public class AdditionalViewModelMapping : Profile
             .ReverseMap();
         CreateMap<AdditionalModel, CreateAdditionalViewModel>();
         CreateMap<AdditionalModel, DeleteAdditionalViewModel>();
+        CreateMap<AdditionalModel, UpdateAdditionalViewModel>();
     }
 }

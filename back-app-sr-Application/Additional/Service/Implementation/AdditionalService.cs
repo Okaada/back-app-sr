@@ -54,18 +54,19 @@ public class AdditionalService : IAdditionalService
         return deleteAdditionalViewModel;
     }
     
-    public async Task<bool> UpdateAdditional(int additionalId, string name, decimal value)
+    public async Task<UpdateAdditionalViewModel> UpdateAdditional(int additionalId, string name, decimal value)
     {
         var additional = await _additionalRepository.GetById(additionalId);
         if (additional == null)
-            return false;
+            throw new Exception("Adicional não encontrado");
         
         additional.Name = name;
         additional.Value = value;
+        var updateAdditionalViewModel = _mapper.Map<UpdateAdditionalViewModel>(additional);
         
         _additionalRepository.Update(additional);
         _uow.Commit();
 
-        return true;
+        return updateAdditionalViewModel;
     }
 }

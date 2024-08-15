@@ -76,7 +76,7 @@ public class AdditionalServiceTests
 
         // Assert
         result.Should().NotBeNull();
-        result.Should().BeOfType<AdditionalViewModel>();
+        result.Should().BeOfType<GetAdditionalViewModel>();
         result.Name.Should().Be(additional.Name);
         result.Value.Should().Be(additional.Value);
         _additionalRepositoryMock.Verify(x => x.GetById(1), Times.Once);

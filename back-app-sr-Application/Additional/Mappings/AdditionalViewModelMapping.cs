@@ -9,10 +9,7 @@ public class AdditionalViewModelMapping : Profile
 {
     public AdditionalViewModelMapping()
     {
-        CreateMap<AdditionalModel, AdditionalViewModel>()
-            .ForMember(dest => dest.AdditionalId,
-                opt => opt.MapFrom(src => src.AdditionalId))
-            .ReverseMap();
+        CreateMap<AdditionalModel, GetAdditionalViewModel>();
         CreateMap<AdditionalModel, CreateAdditionalViewModel>();
         CreateMap<AdditionalModel, DeleteAdditionalViewModel>();
         CreateMap<AdditionalModel, UpdateAdditionalViewModel>();

@@ -46,7 +46,7 @@ public class AdditionalController : ControllerBase
     [ProducesResponseType<int>((int)HttpStatusCode.NoContent)]
     public async Task<IActionResult> GetAdditionalById([FromRoute] int id)
     {
-        var result = await _mediator.Send(new GetAdditionalQuery {AdditionalId = id});
+        var result = await _mediator.Send(new GetAdditionalByIdQuery {AdditionalId = id});
         if (result == null)
             return NoContent();
         

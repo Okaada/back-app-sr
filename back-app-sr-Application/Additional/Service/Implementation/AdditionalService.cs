@@ -29,14 +29,15 @@ public class AdditionalService : IAdditionalService
         return _mapper.Map<CreateAdditionalViewModel>(newAdditional);
     }
 
-    public async Task<IEnumerable<AdditionalViewModel>> GetAllAdditionals()
+    public async Task<IEnumerable<GetAdditionalViewModel>> GetAllAdditionals()
     {
-        return _mapper.Map<IEnumerable<AdditionalViewModel>>(await _additionalRepository.GetAll());
+        return _mapper.Map<IEnumerable<GetAdditionalViewModel>>(await _additionalRepository.GetAll());
     }
     
-    public async Task<AdditionalViewModel> GetAdditionalById(int additionalId)
+    public async Task<GetAdditionalViewModel> GetAdditionalById(int additionalId)
     {
-        return _mapper.Map<AdditionalViewModel>(await _additionalRepository.GetById(additionalId));
+        var additional = await _additionalRepository.GetById(additionalId);
+        return _mapper.Map<GetAdditionalViewModel>(additional);
     }
 
 

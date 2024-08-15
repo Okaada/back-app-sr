@@ -2,7 +2,7 @@
 
 namespace back_app_sr_Application.Additional.ViewModel;
 
-public class AdditionalViewModel
+public class GetAdditionalViewModel
 {
     [JsonProperty("additional_id")]
     public int AdditionalId { get; set; }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using back_app_sr.Infra.Context;
@@ -11,9 +12,11 @@ using back_app_sr.Infra.Context;
 namespace back_app_sr.Infra.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240814003640_DatabaseRefactoring")]
+    partial class DatabaseRefactoring
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -155,7 +158,7 @@ namespace back_app_sr.Infra.Migrations
 
                     b.HasIndex("ItemId");
 
-                    b.ToTable("ItemOrderAdditional");
+                    b.ToTable("ItemOrdersTabItems");
                 });
 
             modelBuilder.Entity("back_app_sr.Domain.Models.Payment.PaymentModel", b =>
@@ -239,15 +242,34 @@ namespace back_app_sr.Infra.Migrations
                     b.Property<int>("ItemId")
                         .HasColumnType("integer");
 
+                    b.Property<Guid>("OrderTabId")
+                        .HasColumnType("uuid");
+
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OrdersTabItems");
+                });
+
+            modelBuilder.Entity("back_app_sr.Domain.Models.Tab.OrderTabModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("TabId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
-                    b.ToTable("OrdersItemsTab");
+                    b.HasIndex("TabId");
+
+                    b.ToTable("OrdersTab");
                 });
 
             modelBuilder.Entity("back_app_sr.Domain.Models.Tab.TabModel", b =>
@@ -267,7 +289,7 @@ namespace back_app_sr.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tab");
+                    b.ToTable("Tabs");
                 });
 
             modelBuilder.Entity("back_app_sr.Domain.Models.UserModel", b =>
@@ -366,6 +388,17 @@ namespace back_app_sr.Infra.Migrations
                     b.Navigation("Item");
 
                     b.Navigation("QuickSaleModel");
+                });
+
+            modelBuilder.Entity("back_app_sr.Domain.Models.Tab.OrderTabModel", b =>
+                {
+                    b.HasOne("back_app_sr.Domain.Models.Tab.TabModel", "Tab")
+                        .WithMany()
+                        .HasForeignKey("TabId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tab");
                 });
 
             modelBuilder.Entity("back_app_sr.Domain.Models.Deliver.DeliveryRegisterModel", b =>

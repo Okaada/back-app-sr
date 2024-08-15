@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using back_app_sr_Application.Additional.Service.Interface;
 using back_app_sr_Application.Additional.ViewModel;
-using back_app_sr.Domain.Models;
+using back_app_sr.Domain.Models.Items;
 using back_app_sr.Infra.Repository.Interfaces;
 
 namespace back_app_sr_Application.Additional.Service.Implementation;

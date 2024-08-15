@@ -4,6 +4,7 @@ using back_app_sr_Application.Additional.Service.Implementation;
 using back_app_sr_Application.Additional.Service.Interface;
 using back_app_sr_Application.Additional.ViewModel;
 using back_app_sr.Domain.Models;
+using back_app_sr.Domain.Models.Items;
 using back_app_sr.Infra.Repository.Interfaces;
 using FluentAssertions;
 using Moq;

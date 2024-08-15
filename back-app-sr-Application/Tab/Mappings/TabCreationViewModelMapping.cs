@@ -1,6 +1,7 @@
 using AutoMapper;
 using back_app_sr_Application.Tab.ViewModel;
 using back_app_sr.Domain.Models;
+using back_app_sr.Domain.Models.Tab;
 
 namespace back_app_sr_Application.Tab.Mappings;
 

@@ -1,12 +1,13 @@
 using back_app_sr.Domain.Models;
+using back_app_sr.Domain.Models.QuickSale;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace back_app_sr.Infra.EntityConfiguration;
 
-public class QuickSaleConfiguration : IEntityTypeConfiguration<QuickSale>
+public class QuickSaleConfiguration : IEntityTypeConfiguration<QuickSaleModel>
 {
-    public void Configure(EntityTypeBuilder<QuickSale> builder)
+    public void Configure(EntityTypeBuilder<QuickSaleModel> builder)
     {
         // Chave primária
         builder.HasKey(qs => qs.QuickSaleId);
@@ -21,7 +22,7 @@ public class QuickSaleConfiguration : IEntityTypeConfiguration<QuickSale>
 
         // Configurações para a propriedade QuickSaleItems
         builder.HasMany(qs => qs.QuickSaleItems)
-            .WithOne(qsi => qsi.QuickSale)
+            .WithOne(qsi => qsi.QuickSaleModel)
             .HasForeignKey(qsi => qsi.QuickSaleId);
     }
 }

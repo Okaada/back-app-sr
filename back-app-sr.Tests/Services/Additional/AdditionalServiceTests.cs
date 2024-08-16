@@ -83,4 +83,46 @@ public class AdditionalServiceTests
     }
 
     #endregion
+
+    #region GetAllAdditionals Test
+
+    [Test]
+    public async Task GetAllAdditionals_WhenCalled_ReturnsListOfAdditionals()
+    {
+        var myProfile = new AdditionalViewModelMapping();
+        var configuration = new MapperConfiguration(cfg => cfg.AddProfile(myProfile));
+        _mapper = new Mapper(configuration);
+    
+        // Arrange
+        var additionalList = new List<AdditionalModel>
+        {
+            new AdditionalModel("Primeiro teste", (decimal)10.50),
+            new AdditionalModel("Segundo teste", (decimal)20.50)
+        };
+    
+        _additionalRepositoryMock.Setup(x => x.GetAll())
+            .ReturnsAsync(additionalList)
+            .Verifiable();
+
+        var additionalService = new AdditionalService(_additionalRepositoryMock.Object, _uowMock.Object, _mapper);
+    
+        // Act
+        var result = await additionalService.GetAllAdditionals();
+        var resultList = result.ToList();
+    
+        // Assert
+        resultList.Should().NotBeNull();
+        resultList.Should().BeOfType<List<GetAdditionalViewModel>>();
+        resultList.Count.Should().Be(additionalList.Count);
+
+        for (int i = 0; i < additionalList.Count; i++)
+        {
+            resultList[i].Name.Should().Be(additionalList[i].Name);
+            resultList[i].Value.Should().Be(additionalList[i].Value);
+        }
+
+        _additionalRepositoryMock.Verify(x => x.GetAll(), Times.Once);
+    }
+
+    #endregion
 }

@@ -63,11 +63,10 @@ public class AdditionalService : IAdditionalService
         
         additional.Name = name;
         additional.Value = value;
-        var updateAdditionalViewModel = _mapper.Map<UpdateAdditionalViewModel>(additional);
         
         _additionalRepository.Update(additional);
         _uow.Commit();
 
-        return updateAdditionalViewModel;
+        return _mapper.Map<UpdateAdditionalViewModel>(additional);
     }
 }

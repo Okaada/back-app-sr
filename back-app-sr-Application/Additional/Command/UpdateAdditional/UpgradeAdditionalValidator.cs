@@ -2,7 +2,7 @@
 
 namespace back_app_sr_Application.Additional.Command.UpdateAdditional;
 
-public class UpgradeAdditionalValidator : AbstractValidator<UpgradeAdditionalCommand>
+public class UpgradeAdditionalValidator : AbstractValidator<UpdateAdditionalCommand>
 {
     public UpgradeAdditionalValidator()
     {

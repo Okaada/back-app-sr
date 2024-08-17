@@ -24,7 +24,7 @@ public class ItemService : IItemService
     {
         var item = new ItemModel(name, value, "adjust");
 
-        _itemRepository.Add(item);
+        await _itemRepository.Add(item);
         _uow.Commit();
         
         return $"Item criado com sucesso. '{item.Name}' , R$'{item.Value}'";

@@ -4,3 +4,5 @@ obj/
 riderModule.iml
 /_ReSharper.Caches/
 back-app-sr.sln.DotSettings.user
+.DS_STORE
+.idea/*

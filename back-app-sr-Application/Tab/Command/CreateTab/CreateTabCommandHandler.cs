@@ -22,7 +22,7 @@ public class CreateTabCommandHandler : IRequestHandler<CreateTabCommand, TabCrea
             throw new ValidationException("Error", validation.Errors);
         }
         
-        var result = await _tabService.CreateTab(request.TableNumber, request.TabType, request.Delivery);
+        var result = await _tabService.CreateTab(request.TableNumber);
         return result;
     }
 }

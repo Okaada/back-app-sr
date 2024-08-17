@@ -4,16 +4,16 @@ using MediatR;
 
 namespace back_app_sr_Application.Tab.Query.GetTabsById;
 
-public class GetTabQueryHandler : IRequestHandler<GetTabQuery, TabViewModel>
+public class GetTabByIdQueryHandler : IRequestHandler<GetTabByIdQuery, TabViewModel>
 {
     private readonly ITabService _tabService;
 
-    public GetTabQueryHandler(ITabService tabService)
+    public GetTabByIdQueryHandler(ITabService tabService)
     {
         _tabService = tabService;
     }
     
-    public async Task<TabViewModel> Handle(GetTabQuery request, CancellationToken cancellationToken)
+    public async Task<TabViewModel> Handle(GetTabByIdQuery request, CancellationToken cancellationToken)
     {
         var result = await _tabService.GetTabById(request.TabId);
         return result;    

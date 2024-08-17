@@ -13,5 +13,5 @@ public class CreateTabCommand : IRequest<TabCreationViewModel>
     [JsonProperty("delivery")]
     public DeliveryDTO? Delivery { get; set; }
     [JsonProperty("tab_type")]
-    public string TabType { get; set; }
+    public string TabType { get; set; } = string.Empty;
 }

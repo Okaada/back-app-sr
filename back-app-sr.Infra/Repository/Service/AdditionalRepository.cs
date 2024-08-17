@@ -4,9 +4,9 @@ using back_app_sr.Infra.Repository.Interfaces;
 
 namespace back_app_sr.Infra.Repository.Service;
 
-public class ItemRepository : Repository<ItemModel>, IItemRepository
+public class AdditionalRepository : Repository<AdditionalModel>, IAdditionalRepository
 {
-    public ItemRepository(ApplicationContext context): base(context)
+    public AdditionalRepository(ApplicationContext context) : base(context)
     {
     }
 }

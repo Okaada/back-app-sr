@@ -1,15 +1,10 @@
-namespace back_app_sr.Domain.Models;
+namespace back_app_sr.Domain.Models.Items;
 
 public class AdditionalModel
 {
-    public int AdditionalId { get; set; }
+    public int Id { get; set; }
     public string Name { get; set; }
     public decimal Value { get; set; }
-
-    public AdditionalModel(int additionalId)
-    {
-        AdditionalId = additionalId;
-    }
     
     public AdditionalModel(string name, decimal value)
     {

@@ -2,6 +2,7 @@
 using back_app_sr_Application.Item.Service.Interface;
 using back_app_sr_Application.Item.ViewModel;
 using back_app_sr.Domain.Models;
+using back_app_sr.Domain.Models.Items;
 using back_app_sr.Infra.Repository.Interfaces;
 
 namespace back_app_sr_Application.Item.Service.Implementation;
@@ -21,7 +22,7 @@ public class ItemService : IItemService
     
     public async Task<string> CreateItem(string name, decimal value)
     {
-        var item = new ItemModel(name, value);
+        var item = new ItemModel(name, value, "adjust");
 
         _itemRepository.Add(item);
         _uow.Commit();

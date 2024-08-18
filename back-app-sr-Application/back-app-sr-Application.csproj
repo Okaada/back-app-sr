@@ -21,4 +21,8 @@
       <ProjectReference Include="..\back-app-sr.Infra\back-app-sr.Infra.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Additional\Command\UpdateAdditional\UpgradeAdditionalValidator.cs" />
+    </ItemGroup>
+
 </Project>

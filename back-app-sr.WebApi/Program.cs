@@ -50,7 +50,13 @@ builder.Services.AddSwaggerGen(swagger =>
         }
     });
 });
-builder.Services.AddControllers();
+
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
+                options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+            });
+
 builder.Services.AddAuthentication
         (JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

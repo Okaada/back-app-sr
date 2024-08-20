@@ -60,7 +60,7 @@ public class UserTests
         _uowMock.Setup(x => x.Commit()).Verifiable();
         
         var myProfile = new UserMappings();
-        var configuration = new MapperConfiguration(cfg => cfg.AddProfile(myProfile));
+        var configuration = new MapperConfiguration(cfg => cfg.AddProfile(myProfile));    
         _mapper = new Mapper(configuration);
 
         var service = new UserService(_userRepository.Object, _uowMock.Object, jwtOptions, _mapper);

@@ -7,7 +7,7 @@ public class ItemViewModel
     [JsonProperty("item_id")]
     public int ItemId { get; set; }
     [JsonProperty("name")]
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
     [JsonProperty("value")]
     public decimal Value { get; set; }
 }

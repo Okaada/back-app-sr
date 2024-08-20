@@ -4,6 +4,7 @@ using back_app_sr.Domain.Models.Items;
 using back_app_sr.Domain.Models.Payment;
 using back_app_sr.Domain.Models.QuickSale;
 using back_app_sr.Domain.Models.Tab;
+using back_app_sr.Domain.Models.User;
 using Microsoft.EntityFrameworkCore;
 
 namespace back_app_sr.Infra.Context;

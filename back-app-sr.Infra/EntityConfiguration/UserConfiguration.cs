@@ -1,4 +1,5 @@
 using back_app_sr.Domain.Models;
+using back_app_sr.Domain.Models.User;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

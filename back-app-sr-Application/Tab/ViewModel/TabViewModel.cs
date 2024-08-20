@@ -9,7 +9,7 @@ public class TabViewModel
     [JsonProperty("table_number")]
     public int TableNumber { get; set; }
     [JsonProperty("status")]
-    public string Status { get; set; }
+    public string Status { get; set; } = string.Empty;
     [JsonProperty("total")]
     public decimal Total { get; set; }
 }

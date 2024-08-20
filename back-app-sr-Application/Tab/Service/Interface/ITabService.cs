@@ -5,7 +5,7 @@ namespace back_app_sr_Application.Tab.Service.Interface;
 
 public interface ITabService
 {
-    Task<TabCreationViewModel> CreateTab(int tableNumber, string tabType, DeliveryDTO? delivery);
+    Task<TabCreationViewModel> CreateTab(int tableNumber);
     Task<IEnumerable<TabViewModel>> GetAllTabs();
     Task<TabViewModel> GetTabById(Guid tabId);
 }   

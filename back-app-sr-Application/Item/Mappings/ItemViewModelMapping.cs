@@ -14,4 +14,4 @@ public class ItemViewModelMapping : Profile
                 opt => opt.MapFrom(src => src.Id))
             .ReverseMap();
     }
-}
+}   

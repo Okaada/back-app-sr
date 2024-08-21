@@ -21,4 +21,17 @@
       <ProjectReference Include="..\back-app-sr.Infra\back-app-sr.Infra.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Additional\Command\UpdateAdditional\UpgradeAdditionalValidator.cs" />
+      <Compile Remove="Item\Command\DeleteItem\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Item\Command\DeleteItem\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Item\Command\DeleteItem\**" />
+    </ItemGroup>
+
 </Project>

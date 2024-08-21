@@ -4,7 +4,7 @@ using MediatR;
 
 namespace back_app_sr_Application.Item.Query.GetAllItems;
 
-public class GetAllItemsQueryHandler : IRequestHandler<GetAllItemsQuery, IEnumerable<ItemViewModel>>
+public class GetAllItemsQueryHandler : IRequestHandler<GetAllItemsQuery, IEnumerable<ItemResponseViewModel>>
 {
     private readonly IItemService _itemservice;
     
@@ -13,9 +13,9 @@ public class GetAllItemsQueryHandler : IRequestHandler<GetAllItemsQuery, IEnumer
         _itemservice = itemService;
     }
     
-    public async Task<IEnumerable<ItemViewModel>> Handle(GetAllItemsQuery request, CancellationToken cancellationToken)
+    public async Task<IEnumerable<ItemResponseViewModel>> Handle(GetAllItemsQuery request, CancellationToken cancellationToken)
     {
-        var result = await _itemservice.GetAllItems();
-        return result;
+        var items = await _itemservice.GetAllItems();
+        return items;
     }
 }

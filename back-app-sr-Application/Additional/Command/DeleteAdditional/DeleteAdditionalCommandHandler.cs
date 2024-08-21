@@ -1,10 +1,6 @@
-﻿using back_app_sr_Application.Additional.Command.CreateAdditional;
-using back_app_sr_Application.Additional.Service.Interface;
+﻿using back_app_sr_Application.Additional.Service.Interface;
 using back_app_sr_Application.Additional.ViewModel;
-using back_app_sr.Infra.Repository.Interfaces;
-using FluentValidation;
 using MediatR;
-using ValidationException = System.ComponentModel.DataAnnotations.ValidationException;
 
 namespace back_app_sr_Application.Additional.Command.DeleteAdditional;
 

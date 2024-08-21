@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using back_app_sr.Infra.Context;
@@ -11,9 +12,11 @@ using back_app_sr.Infra.Context;
 namespace back_app_sr.Infra.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240820221448_ChangedActiveColumnToIsActiveForItems")]
+    partial class ChangedActiveColumnToIsActiveForItems
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

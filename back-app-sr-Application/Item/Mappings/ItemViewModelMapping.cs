@@ -9,11 +9,7 @@ public class ItemViewModelMapping : Profile
     public ItemViewModelMapping()
     {
         CreateMap<ItemModel, CreateItemViewModel>();
-        CreateMap<ItemModel, GetItemViewModel>()
-            .ForMember(dest => dest.ItemId, opt => opt.MapFrom(src => src.Id));
-        CreateMap<ItemModel, UpdateItemViewModel>()
-            .ForMember(dest => dest.ItemId, opt => opt.MapFrom(src => src.Id));
-        CreateMap<ItemModel, DeleteItemViewModel>()
+        CreateMap<ItemModel, ItemResponseViewModel>()
             .ForMember(dest => dest.ItemId, opt => opt.MapFrom(src => src.Id));
     }
 }   

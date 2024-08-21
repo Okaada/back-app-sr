@@ -9,13 +9,13 @@ public class ItemModel
     public string Name { get; set; }
     public decimal Value { get; set; }
     public string Description { get; set; }
-    public bool Active { get; set; }
+    public bool IsActive { get; set; }
     
-    public ItemModel(string name, decimal value, string description, bool active)
+    public ItemModel(string name, decimal value, string description)
     {
         Name = name;
         Value = value;
         Description = description;
-        Active = active;
+        IsActive = true;
     }
 }

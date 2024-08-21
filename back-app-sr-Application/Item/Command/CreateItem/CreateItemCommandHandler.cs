@@ -24,7 +24,7 @@ public class CreateItemCommandHandler : IRequestHandler<CreateItemCommand, Creat
         if (!validation.IsValid)
             throw new ValidationException("Error", validation.Errors);
 
-        var result = await _itemService.CreateItem(request.Name, request.Value, request.Description, request.Active);
+        var result = await _itemService.CreateItem(request.Name, request.Value, request.Description);
         return result;
     }
 }

@@ -12,6 +12,5 @@ public class CreateItemValidator : AbstractValidator<CreateItemCommand>
         RuleFor(x => x.Value).GreaterThan(0).WithMessage("O valor do item não pode ser menor ou igual a zero.");
         RuleFor(x => x.Description).NotEmpty().WithMessage("A descrição do item não pode ser vazia.");
         RuleFor(x => x.Description).Length(2, 250).WithMessage("A descrição do item deve ter entre 2 e 250 caracteres.");
-        RuleFor(x => x.Active).Must(active => active == true).WithMessage("O item deve estar ativo para ser criado.");
     }
 }

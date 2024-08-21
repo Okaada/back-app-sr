@@ -10,49 +10,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7eaffca-a9d8-43bb-ab77-cb64dcdf8204" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/DeleteItem/DeleteItemCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/DeleteItem/DeleteItemCommandHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/DeleteItem/DeleteItemValidator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/UpdateItem/UpdateItemCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/UpdateItem/UpdateItemCommandHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/UpdateItem/UpdateItemValidator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetActiveItemById/GetActiveItemByIdQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetActiveItemById/GetActiveItemByIdQueryHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetAllActiveItems/GetAllActiveItemsQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetAllActiveItems/GetAllActiveItemsQueryHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/ViewModel/DeleteItemViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/ViewModel/UpdateItemViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-app-sr.Tests/Services/Item/ItemServiceTestes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Additional/Command/DeleteAdditional/DeleteAdditionalCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Additional/Command/DeleteAdditional/DeleteAdditionalCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Additional/Command/UpdateAdditional/UpdateAdditionalValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Additional/Command/UpdateAdditional/UpdateAdditionalValidator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Additional/Mappings/AdditionalViewModelMapping.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Additional/Mappings/AdditionalViewModelMapping.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Additional/Service/Implementation/AdditionalService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Additional/Service/Implementation/AdditionalService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Additional/Service/Interface/IAdditionalService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Additional/Service/Interface/IAdditionalService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/ItemCommand.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/ItemCommandHandler.cs" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetAllItems/GetAllItemsQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetItemById/GetItemByIdQueryHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/ViewModel/ItemResponseViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-app-sr.WebApi/DTOs/Item/UpdateItemDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.back-app-sr/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.back-app-sr/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/CreateItem/CreateItemCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/CreateItem/CreateItemCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/CreateItem/CreateItemCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/CreateItem/CreateItemCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/CreateItem/CreateItemValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/CreateItem/CreateItemValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/DeleteItem/DeleteItemCommand.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/DeleteItem/DeleteItemCommandHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/DeleteItem/DeleteItemValidator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/UpdateItem/UpdateItemCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/UpdateItem/UpdateItemCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/UpdateItem/UpdateItemCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/UpdateItem/UpdateItemCommandHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Mappings/ItemViewModelMapping.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Mappings/ItemViewModelMapping.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetAllItems/GetAllItemsQuery.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetAllItems/GetAllItemsQueryHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetItemById/GetItemQuery.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetItemById/GetItemQueryHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetActiveItemById/GetActiveItemByIdQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetItemById/GetItemByIdQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetActiveItemById/GetActiveItemByIdQueryHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetAllActiveItems/GetAllActiveItemsQuery.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetAllActiveItems/GetAllActiveItemsQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetAllItems/GetAllItemsQueryHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Service/Implementation/ItemService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Service/Implementation/ItemService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Service/Interface/IItemService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Service/Interface/IItemService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/ViewModel/ItemViewModel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Tab/Command/CreateTab/CreateTabCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Tab/Command/CreateTab/CreateTabCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Tab/Command/CreateTab/CreateTabCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Tab/Command/CreateTab/CreateTabCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Tab/Command/CreateTab/CreateTabValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Tab/Command/CreateTab/CreateTabValidator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Tab/Command/InsertOrderCommand/InsertOrderCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Tab/Command/InsertOrderCommand/InsertOrderCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Tab/Command/InsertOrderCommand/InsertOrderCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Tab/Command/InsertOrderCommand/InsertOrderCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Tab/Query/GetAllTabs/GetAllTabsQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Tab/Query/GetAllTabs/GetAllTabsQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Tab/Query/GetAllTabs/GetAllTabsQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Tab/Query/GetAllTabs/GetAllTabsQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Tab/Query/GetTabsById/GetTabQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Tab/Query/GetTabsById/GetTabQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Tab/Query/GetTabsById/GetTabQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Tab/Query/GetTabsById/GetTabQueryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/ViewModel/CreateItemViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/ViewModel/CreateItemViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/ViewModel/DeleteItemViewModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/ViewModel/GetItemViewModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/ViewModel/UpdateItemViewModel.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/back-app-sr-Application/back-app-sr-Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/back-app-sr-Application.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-app-sr.Domain/Models/Items/ItemModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr.Domain/Models/Items/ItemModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr.Infra/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr.Infra/DependencyInjection.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-app-sr.Infra/Migrations/DataContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr.Infra/Migrations/DataContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-app-sr.Tests/Services/Item/ItemServiceTestes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr.Tests/Services/Item/ItemServiceTestes.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-app-sr.WebApi/Controllers/ItemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr.WebApi/Controllers/ItemController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr.WebApi/Controllers/TabController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr.WebApi/Controllers/TabController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +55,9 @@
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/5535e31a712343a63f5d7d796cd874e563e5ac14/src/libraries/Microsoft.Extensions.DependencyInjection/src/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8aca45508683a6169bab9e8bd96b7cda607d638cacfaa31173c8c278c45/ISender.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/back-app-sr-Application/Additional/Command/UpdateAdditional/UpgradeAdditionalValidator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetAllActiveItems/GetAllActiveItemsQueryHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetAllItems/GetAllItemsQueryHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/back-app-sr-Application/Item/ViewModel/ItemResponseViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/back-app-sr-Application/bin/Debug/net8.0/back-app-sr-Application.deps.json" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -82,27 +70,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.back-app-sr.WebApi: IIS Express.executor&quot;: &quot;Debug&quot;,
-    &quot;.NET Launch Settings Profile.back-app-sr.WebApi: http.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/item&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.back-app-sr.WebApi: IIS Express.executor": "Debug",
+    ".NET Launch Settings Profile.back-app-sr.WebApi: http.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "feature/item",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Jonatas Rocha\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Jonatas Rocha\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Jonatas Rocha\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\Jonatas Rocha\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Jonatas Rocha\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\Jonatas Rocha\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.back-app-sr.WebApi: http">
     <configuration name="back-app-sr.WebApi: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/back-app-sr.WebApi/back-app-sr.WebApi.csproj" />
@@ -173,7 +161,10 @@
       <workItem from="1723911167570" duration="5625000" />
       <workItem from="1723924107865" duration="27000" />
       <workItem from="1723990740837" duration="1757000" />
-      <workItem from="1723992749156" duration="4807000" />
+      <workItem from="1723992749156" duration="5302000" />
+      <workItem from="1723998932446" duration="1238000" />
+      <workItem from="1724109480197" duration="3209000" />
+      <workItem from="1724189544719" duration="8798000" />
     </task>
     <servers />
   </component>
@@ -183,5 +174,24 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/back-app-sr-Application/Item/Command/UpdateItem/UpdateItemCommandHandler.cs</url>
+          <line>23</line>
+          <properties documentPath="C:\Users\Jonatas Rocha\RiderProjects\back-app-sr\back-app-sr-Application\Item\Command\UpdateItem\UpdateItemCommandHandler.cs" containingFunctionPresentation="Method 'Handle'">
+            <startOffsets>
+              <option value="824" />
+            </startOffsets>
+            <endOffsets>
+              <option value="951" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

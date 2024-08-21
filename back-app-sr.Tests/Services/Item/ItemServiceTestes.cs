@@ -34,7 +34,7 @@ public class ItemServiceTests
         _mapper = new Mapper(configuration);
         
         // Arrange
-        var item = new ItemModel("Nome", (decimal)10.35, "Descrição", true);
+        var item = new ItemModel("Nome", (decimal)10.35, "Descrição");
         _itemRepositoryMock.Setup(x => x.Add(It.IsAny<ItemModel>()))
             .Returns(Task.CompletedTask)
             .Verifiable();
@@ -44,7 +44,7 @@ public class ItemServiceTests
         
         // Act
         var result =
-            await itemService.CreateItem(item.Name, item.Value, item.Description, item.Active);
+            await itemService.CreateItem(item.Name, item.Value, item.Description);
         
         // Assert
         result.Should().NotBeNull();
@@ -52,9 +52,8 @@ public class ItemServiceTests
         result.Name.Should().Be(item.Name);
         result.Value.Should().Be(item.Value);
         result.Description.Should().Be(item.Description);
-        result.Active.Should().Be(item.Active);
         _itemRepositoryMock.Verify(x => x.Add(It.Is<ItemModel>(a => 
-            a.Name == item.Name && a.Value == item.Value && a.Description == item.Description && a.Active == item.Active)), Times.Once);
+            a.Name == item.Name && a.Value == item.Value && a.Description == item.Description && a.IsActive == item.IsActive)), Times.Once);
         _uowMock.Verify(x => x.Commit(), Times.Once);
     }
 
@@ -67,22 +66,22 @@ public class ItemServiceTests
     {
         // Arrange
         var itemId = 1;
-        var item = new ItemModel("Nome", (decimal)10.35, "Descrição", true);
+        var item = new ItemModel("Nome", (decimal)10.35, "Descrição");
         _itemRepositoryMock.Setup(x => x.GetById(itemId))
             .ReturnsAsync(item);
     
         var itemService = new ItemService(_itemRepositoryMock.Object, _uowMock.Object, _mapper);
 
         // Act
-        var result = await itemService.GetActiveItemById(itemId);
+        var result = await itemService.GetItemById(itemId);
 
         // Assert
         result.Should().NotBeNull();
-        result.Should().BeOfType<GetItemViewModel>();
+        result.Should().BeOfType<ItemResponseViewModel>();
         result.Name.Should().Be(item.Name);
         result.Value.Should().Be(item.Value);
         result.Description.Should().Be(item.Description);
-        result.Active.Should().BeTrue();
+        result.IsActive.Should().BeTrue();
     }
 
     #endregion
@@ -95,8 +94,8 @@ public class ItemServiceTests
         // Arrange
         var itemModels = new List<ItemModel>
         {
-            new ItemModel("Item1", 10.35m, "Descrição 1", true),
-            new ItemModel("Item2", 20.50m, "Descrição 2", true)
+            new ItemModel("Item1", 10.35m, "Descrição 1"),
+            new ItemModel("Item2", 20.50m, "Descrição 2")
         };
 
         _itemRepositoryMock.Setup(x => x.GetAll())
@@ -105,12 +104,12 @@ public class ItemServiceTests
         var itemService = new ItemService(_itemRepositoryMock.Object, _uowMock.Object, _mapper);
 
         // Act
-        var result = await itemService.GetAllActiveItems();
+        var result = await itemService.GetAllItems();
 
         // Assert
         result.Should().NotBeNull();
         result.Should().HaveCount(2);
-        result.First().Should().BeOfType<GetItemViewModel>();
+        result.First().Should().BeOfType<ItemResponseViewModel>();
     }
 
     #endregion

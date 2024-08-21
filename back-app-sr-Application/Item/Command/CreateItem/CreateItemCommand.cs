@@ -12,6 +12,4 @@ public class CreateItemCommand : IRequest<CreateItemViewModel>
     public decimal Value { get; set; } = 0;
     [JsonProperty("description")]
     public string Description { get; set; } = string.Empty;
-    [JsonProperty("active")]
-    public bool Active { get; set; } = true;
 }

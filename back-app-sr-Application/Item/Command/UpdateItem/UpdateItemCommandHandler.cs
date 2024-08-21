@@ -4,7 +4,7 @@ using MediatR;
 
 namespace back_app_sr_Application.Item.Command.UpdateItem;
 
-public class UpdateItemCommandHandler : IRequestHandler<UpdateItemCommand, UpdateItemViewModel>
+public class UpdateItemCommandHandler : IRequestHandler<UpdateItemCommand, ItemResponseViewModel>
 {
     private readonly IItemService _itemService;
 
@@ -13,7 +13,7 @@ public class UpdateItemCommandHandler : IRequestHandler<UpdateItemCommand, Updat
         _itemService = itemService;
     }
 
-    public async Task<UpdateItemViewModel> Handle(UpdateItemCommand request, CancellationToken cancellationToken)
+    public async Task<ItemResponseViewModel> Handle(UpdateItemCommand request, CancellationToken cancellationToken)
     {
         var validator = new UpdateItemValidator();
         var validation = await validator.ValidateAsync(request, cancellationToken);
@@ -21,7 +21,7 @@ public class UpdateItemCommandHandler : IRequestHandler<UpdateItemCommand, Updat
         if (!validation.IsValid)
             throw new FluentValidation.ValidationException("Error", validation.Errors);
 
-        var result = await _itemService.UpdateItem(request.ItemId, request.Name, request.Value, request.Description);
+        var result = await _itemService.UpdateItem(request.ItemId, request.Name, request.Value, request.Description, request.IsActive);
         return result;
     }
 }

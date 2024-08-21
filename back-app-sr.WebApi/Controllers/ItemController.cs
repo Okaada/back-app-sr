@@ -1,10 +1,10 @@
 ﻿using System.Net;
 using back_app_sr_Application.Item.Command.CreateItem;
-using back_app_sr_Application.Item.Command.DeleteItem;
 using back_app_sr_Application.Item.Command.UpdateItem;
-using back_app_sr_Application.Item.Query.GetAllActiveItems;
-using back_app_sr_Application.Item.Query.GetActiveItemById;
+using back_app_sr_Application.Item.Query.GetAllItems;
+using back_app_sr_Application.Item.Query.GetItemById;
 using back_app_sr.Domain.Models.Items;
+using back_app_sr.WebApi.DTOs.Item;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +24,7 @@ public class ItemController : ControllerBase
     [HttpPost]
     [ProducesResponseType(typeof(int), (int)HttpStatusCode.Created)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+    //Alterar para Command
     public async Task<IActionResult> CreateItem([FromBody] CreateItemCommand createItemRequest)
     {
         var result = await _mediator.Send(createItemRequest);
@@ -33,9 +34,9 @@ public class ItemController : ControllerBase
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<ItemModel>), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
-    public async Task<IActionResult> GetAllActiveItems()
+    public async Task<IActionResult> GetAllItems()
     {
-        var result = await _mediator.Send(new GetAllActiveItemsQuery());
+        var result = await _mediator.Send(new GetAllItemsQuery());
         if (!result.Any())
             return NoContent();
         
@@ -45,10 +46,10 @@ public class ItemController : ControllerBase
     [HttpGet("{id}")]
     [ProducesResponseType(typeof(ItemModel), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
-    public async Task<IActionResult> GetActiveItemById([FromRoute] int id)
+    public async Task<IActionResult> GetItemById([FromRoute] int id)
     {
-        var result = await _mediator.Send(new GetActiveItemByIdQuery {ItemId = id});
-        if (result == null)
+        var result = await _mediator.Send(new GetItemByIdQuery {ItemId = id});
+        if (result.ItemId == 0)
             return NoContent();
         
         return Ok(result);
@@ -58,22 +59,22 @@ public class ItemController : ControllerBase
     [ProducesResponseType(typeof(ItemModel), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    public async Task<IActionResult> UpdateItem([FromRoute] int id, [FromBody] UpdateItemCommand updateItemRequest)
+    public async Task<IActionResult> UpdateItem([FromRoute] int id, [FromBody] UpdateItemDTO updateUpdateItemRequest)
     {
-        if (id != updateItemRequest.ItemId)
-            return BadRequest("ID no URL não corresponde ao ID no corpo da requisição.");
+        var updateItem = new UpdateItemCommand
+        {
+            ItemId = id,
+            Name = updateUpdateItemRequest.Name,
+            Value = updateUpdateItemRequest.Value,
+            Description = updateUpdateItemRequest.Description,
+            IsActive = updateUpdateItemRequest.IsActive
+        };
+        
+        var result = await _mediator.Send(updateItem);
 
-        var result = await _mediator.Send(updateItemRequest);
-        return Ok(result);
-    }
-    
-    [HttpDelete("{id}")]
-    [ProducesResponseType((int)HttpStatusCode.NotFound)]
-    [ProducesResponseType((int)HttpStatusCode.OK)]
-    public async Task<IActionResult> DeleteItem([FromRoute] int id)
-    {
-        var result = await _mediator.Send(new DeleteItemCommand { ItemId = id });
-
+        if (result.ItemId == 0)
+            NoContent();
+        
         return Ok(result);
     }
 }

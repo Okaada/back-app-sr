@@ -10,6 +10,4 @@ public class CreateItemViewModel
     public decimal Value { get; set; }
     [JsonProperty("description")] 
     public string Description { get; set; }
-    [JsonProperty("active")]
-    public bool Active { get; set; }
 }

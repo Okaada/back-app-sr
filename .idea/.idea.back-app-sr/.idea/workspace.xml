@@ -10,35 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7eaffca-a9d8-43bb-ab77-cb64dcdf8204" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetAllItems/GetAllItemsQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetItemById/GetItemByIdQueryHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/ViewModel/ItemResponseViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-app-sr.WebApi/DTOs/Item/UpdateItemDTO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.back-app-sr/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.back-app-sr/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/CreateItem/CreateItemCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/CreateItem/CreateItemCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/CreateItem/CreateItemCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/CreateItem/CreateItemCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/CreateItem/CreateItemValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/CreateItem/CreateItemValidator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/DeleteItem/DeleteItemCommand.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/DeleteItem/DeleteItemCommandHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/DeleteItem/DeleteItemValidator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/UpdateItem/UpdateItemCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/UpdateItem/UpdateItemCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/UpdateItem/UpdateItemCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Command/UpdateItem/UpdateItemCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Mappings/ItemViewModelMapping.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Mappings/ItemViewModelMapping.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetActiveItemById/GetActiveItemByIdQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetItemById/GetItemByIdQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetActiveItemById/GetActiveItemByIdQueryHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetAllActiveItems/GetAllActiveItemsQuery.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetAllActiveItems/GetAllActiveItemsQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Query/GetAllItems/GetAllItemsQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Service/Implementation/ItemService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Service/Implementation/ItemService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/Service/Interface/IItemService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/Service/Interface/IItemService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/ViewModel/CreateItemViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/Item/ViewModel/CreateItemViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/ViewModel/DeleteItemViewModel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/ViewModel/GetItemViewModel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/Item/ViewModel/UpdateItemViewModel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr-Application/back-app-sr-Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr-Application/back-app-sr-Application.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr.Domain/Models/Items/ItemModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr.Domain/Models/Items/ItemModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr.Infra/Migrations/DataContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr.Infra/Migrations/DataContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr.Tests/Services/Item/ItemServiceTestes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr.Tests/Services/Item/ItemServiceTestes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-app-sr.WebApi/Controllers/ItemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back-app-sr.WebApi/Controllers/ItemController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,27 +42,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.back-app-sr.WebApi: IIS Express.executor": "Debug",
-    ".NET Launch Settings Profile.back-app-sr.WebApi: http.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feature/item",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.back-app-sr.WebApi: IIS Express.executor&quot;: &quot;Debug&quot;,
+    &quot;.NET Launch Settings Profile.back-app-sr.WebApi: http.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/item&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\Jonatas Rocha\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Jonatas Rocha\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\Jonatas Rocha\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\Jonatas Rocha\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Jonatas Rocha\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Jonatas Rocha\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.back-app-sr.WebApi: http">
     <configuration name="back-app-sr.WebApi: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/back-app-sr.WebApi/back-app-sr.WebApi.csproj" />
@@ -164,7 +136,7 @@
       <workItem from="1723992749156" duration="5302000" />
       <workItem from="1723998932446" duration="1238000" />
       <workItem from="1724109480197" duration="3209000" />
-      <workItem from="1724189544719" duration="8798000" />
+      <workItem from="1724189544719" duration="10087000" />
     </task>
     <servers />
   </component>

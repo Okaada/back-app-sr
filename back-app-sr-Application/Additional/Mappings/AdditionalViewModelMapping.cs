@@ -9,9 +9,8 @@ public class AdditionalViewModelMapping : Profile
     public AdditionalViewModelMapping()
     {
         CreateMap<AdditionalModel, CreateAdditionalViewModel>();
-        CreateMap<AdditionalModel, GetAdditionalViewModel>()
+        CreateMap<AdditionalModel, AdditionalResponseViewModel>()
             .ForMember(dest => dest.AdditionalId, opt => opt.MapFrom(src => src.Id));
-        CreateMap<AdditionalModel, UpdateAdditionalViewModel>();
         CreateMap<AdditionalModel, DeleteAdditionalViewModel>();
     }
 }

@@ -29,23 +29,27 @@ public class AdditionalService : IAdditionalService
         return _mapper.Map<CreateAdditionalViewModel>(newAdditional);
     }
 
-    public async Task<IEnumerable<GetAdditionalViewModel>> GetAllAdditionals()
+    public async Task<IEnumerable<AdditionalResponseViewModel>> GetAllAdditionals()
     {
-        return _mapper.Map<IEnumerable<GetAdditionalViewModel>>(await _additionalRepository.GetAll());
+        return _mapper.Map<IEnumerable<AdditionalResponseViewModel>>(await _additionalRepository.GetAll());
     }
     
-    public async Task<GetAdditionalViewModel> GetAdditionalById(int id)
+    public async Task<AdditionalResponseViewModel> GetAdditionalById(int additionalId)
     {
-        var additional = await _additionalRepository.GetById(id);
-        return _mapper.Map<GetAdditionalViewModel>(additional);
+        var additional = await _additionalRepository.GetById(additionalId);
+
+        if (additional == null)
+            return new AdditionalResponseViewModel();
+            
+        return _mapper.Map<AdditionalResponseViewModel>(additional);
     }
 
 
-    public async Task<DeleteAdditionalViewModel> DeleteAdditional(int id)
+    public async Task<DeleteAdditionalViewModel> DeleteAdditional(int additionalId)
     {
-        var additional = await _additionalRepository.GetById(id);
+        var additional = await _additionalRepository.GetById(additionalId);
         if (additional == null)
-            throw new Exception("Adicional não encontrado");
+            return new DeleteAdditionalViewModel();
 
         var deleteAdditionalViewModel = _mapper.Map<DeleteAdditionalViewModel>(additional); 
         
@@ -55,18 +59,18 @@ public class AdditionalService : IAdditionalService
         return deleteAdditionalViewModel;
     }
     
-    public async Task<UpdateAdditionalViewModel> UpdateAdditional(int id, string name, decimal value)
+    public async Task<AdditionalResponseViewModel> UpdateAdditional(int additionalId, string name, decimal value)
     {
-        var additional = await _additionalRepository.GetById(id);
+        var additional = await _additionalRepository.GetById(additionalId);
         if (additional == null)
-            throw new Exception("Adicional não encontrado");
-        
+            return new AdditionalResponseViewModel();
+
         additional.Name = name;
         additional.Value = value;
         
         _additionalRepository.Update(additional);
         _uow.Commit();
 
-        return _mapper.Map<UpdateAdditionalViewModel>(additional);
+        return _mapper.Map<AdditionalResponseViewModel>(additional);
     }
 }

@@ -77,7 +77,7 @@ public class AdditionalServiceTests
 
         // Assert
         result.Should().NotBeNull();
-        result.Should().BeOfType<GetAdditionalViewModel>();
+        result.Should().BeOfType<AdditionalResponseViewModel>();
         result.Name.Should().Be(additional.Name);
         result.Value.Should().Be(additional.Value);
         _additionalRepositoryMock.Verify(x => x.GetById(1), Times.Once);
@@ -113,7 +113,7 @@ public class AdditionalServiceTests
     
         // Assert
         resultList.Should().NotBeNull();
-        resultList.Should().BeOfType<List<GetAdditionalViewModel>>();
+        resultList.Should().BeOfType<List<AdditionalResponseViewModel>>();
         resultList.Count.Should().Be(additionalList.Count);
 
         for (int i = 0; i < additionalList.Count; i++)

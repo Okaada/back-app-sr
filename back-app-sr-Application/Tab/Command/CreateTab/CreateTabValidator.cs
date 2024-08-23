@@ -6,7 +6,7 @@ public class CreateTabValidator : AbstractValidator<CreateTabCommand>
 {
     public CreateTabValidator()
     {
-        RuleFor(x => x.TabType).NotEmpty().WithMessage("O tipo da comanda não pode ser vazio");
-        RuleFor(x => x.TableNumber).GreaterThanOrEqualTo(0).WithMessage("O número da mesa não pode ser menor que 0");
+        RuleFor(x => x.TableNumber).GreaterThan(0).WithMessage("O número da mesa não pode ser menor ou igual a 0");
+        RuleFor(x => x.Name).NotEmpty().WithMessage("O nome não pode estar vazio");
     }
 }

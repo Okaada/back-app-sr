@@ -7,6 +7,7 @@ using back_app_sr.WebApi.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.SetBasePath(Directory.GetCurrentDirectory())
@@ -55,7 +56,13 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
                 options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+                options.SerializerSettings.ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new SnakeCaseNamingStrategy() // Isso respeita os atributos [JsonProperty]
+                };
             });
+
+builder.Services.AddSwaggerGenNewtonsoftSupport();
 
 builder.Services.AddAuthentication
         (JwtBearerDefaults.AuthenticationScheme)

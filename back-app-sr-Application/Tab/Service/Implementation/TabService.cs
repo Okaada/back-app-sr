@@ -19,13 +19,11 @@ public class TabService : ITabService
         _mapper = mapper;
     }
     
-    public async Task<TabCreationViewModel> CreateTab(int tableNumber)
+    public async Task<TabCreationViewModel> CreateTab(int tableNumber, string name)
     {
-        var newTab = new TabModel(tableNumber);
+        var newTab = new TabModel(tableNumber, name);
         await _tabRepository.Add(newTab);
-        
         _uow.Commit();
-
         return _mapper.Map<TabCreationViewModel>(newTab);
     }
 
@@ -36,6 +34,20 @@ public class TabService : ITabService
 
     public async Task<TabViewModel> GetTabById(Guid tabId)
     {
-        return _mapper.Map<TabViewModel>(await _tabRepository.GetById(tabId));
+        var result = await _tabRepository.GetById(tabId);
+        return result == null ? new TabViewModel() : _mapper.Map<TabViewModel>(result);
+    }
+
+    public async Task<UpdateTabViewModel> UpdateTab(Guid guid, string name, string status, int table)
+    {
+        var currentTab = await _tabRepository.GetById(guid);
+        if (currentTab == null)
+            throw new KeyNotFoundException();
+        
+        currentTab.UpdateTab(name, status, table);
+        _tabRepository.Update(currentTab);
+        _uow.Commit();
+
+        return _mapper.Map<UpdateTabViewModel>(currentTab);
     }
 }

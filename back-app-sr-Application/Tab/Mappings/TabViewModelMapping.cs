@@ -11,8 +11,13 @@ public class TabViewModelMapping : Profile
     {
         CreateMap<TabModel, TabViewModel>()
             .ForMember(dest => dest.TableNumber,
-                opt => opt.MapFrom(src => src.TableNumber))
+                opt => 
+                    opt.MapFrom(src => src.TableNumber))
+            .ForMember(dest => dest.Status, opt =>
+                opt.MapFrom( src => Enum.GetName(typeof(TabStatusEnum), src.Status)))
             .ReverseMap();
-  
+
+        CreateMap<TabModel, UpdateTabViewModel>();
+
     }
 }

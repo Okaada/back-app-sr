@@ -13,6 +13,9 @@ public class TabModelConfiguration
 
         builder.Property(t => t.TableNumber)
             .IsRequired();
+        
+        builder.Property(t => t.Name)
+            .IsRequired();
 
         builder.Property(t => t.Status)
             .IsRequired()

@@ -50,10 +50,7 @@ public class ItemService : IItemService
         if (item == null)
             return new ItemResponseViewModel();
 
-        item.Name = name;
-        item.Value = value;
-        item.Description = description;
-        item.IsActive = isActive;
+        item.UpdateItem(name, value, description, isActive);
         
         _itemRepository.Update(item);
         _uow.Commit();

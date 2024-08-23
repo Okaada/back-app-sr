@@ -49,7 +49,7 @@ public class AdditionalService : IAdditionalService
     {
         var additional = await _additionalRepository.GetById(additionalId);
         if (additional == null)
-            return new DeleteAdditionalViewModel();
+            throw new KeyNotFoundException($"Nenhum adicional encontrado com ID {additionalId}");
 
         var deleteAdditionalViewModel = _mapper.Map<DeleteAdditionalViewModel>(additional); 
         
@@ -63,10 +63,9 @@ public class AdditionalService : IAdditionalService
     {
         var additional = await _additionalRepository.GetById(additionalId);
         if (additional == null)
-            return new AdditionalResponseViewModel();
+            throw new KeyNotFoundException($"Nenhum adicional encontrado com ID {additionalId}");
 
-        additional.Name = name;
-        additional.Value = value;
+        additional.UpdateAdditional(name, value);
         
         _additionalRepository.Update(additional);
         _uow.Commit();

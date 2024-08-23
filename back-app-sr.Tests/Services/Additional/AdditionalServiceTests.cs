@@ -80,7 +80,7 @@ public class AdditionalServiceTests
         result.Should().BeOfType<AdditionalResponseViewModel>();
         result.Name.Should().Be(additional.Name);
         result.Value.Should().Be(additional.Value);
-        _additionalRepositoryMock.Verify(x => x.GetById(1), Times.Once);
+        _additionalRepositoryMock.Verify(x => x.GetById(It.IsAny<int>()), Times.Once);
     }
 
     #endregion

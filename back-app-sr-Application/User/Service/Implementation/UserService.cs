@@ -47,7 +47,7 @@ public class UserService : IUserService
     public async Task<UserLoginResponseDTO> Login(string email, string password)
     {
         var user = await _userRepository.GetUserByEmail(email);
-        if (!user.VerifyPassword(password)) return new UserLoginResponseDTO(string.Empty);
+        if (user == null || !user.VerifyPassword(password)) return new UserLoginResponseDTO(string.Empty);
 
         var token = await GenerateJwtToken(user);
         return new UserLoginResponseDTO(token);

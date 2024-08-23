@@ -1,3 +1,4 @@
+using System.Net;
 using back_app_sr_Application.User.Command.Login;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -17,11 +18,13 @@ public class LoginController : ControllerBase
     }
     
     [HttpPost]
+    [ProducesResponseType<int>((int)HttpStatusCode.OK)]
+    [ProducesResponseType<int>((int)HttpStatusCode.Unauthorized)]
     public async Task<IActionResult> UserLogin([FromBody] LoginCommand loginRequest)
     {
         var result = await _mediator.Send(loginRequest);
         if (string.IsNullOrEmpty(result.Token))
-            return Unauthorized("Email ou Senha inválidos");
+            return Unauthorized();
         return Ok(result);
     }
 }

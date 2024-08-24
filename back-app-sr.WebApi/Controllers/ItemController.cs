@@ -3,6 +3,7 @@ using back_app_sr_Application.Item.Command.CreateItem;
 using back_app_sr_Application.Item.Command.UpdateItem;
 using back_app_sr_Application.Item.Query.GetAllItems;
 using back_app_sr_Application.Item.Query.GetItemById;
+using back_app_sr_Application.Item.ViewModel;
 using back_app_sr.Domain.Models.Items;
 using back_app_sr.WebApi.DTOs.Item;
 using MediatR;
@@ -24,7 +25,6 @@ public class ItemController : ControllerBase
     [HttpPost]
     [ProducesResponseType(typeof(int), (int)HttpStatusCode.Created)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    //Alterar para Command
     public async Task<IActionResult> CreateItem([FromBody] CreateItemCommand createItemRequest)
     {
         var result = await _mediator.Send(createItemRequest);
@@ -32,7 +32,7 @@ public class ItemController : ControllerBase
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<ItemModel>), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(IEnumerable<ItemResponseViewModel>), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     public async Task<IActionResult> GetAllItems()
     {
@@ -44,7 +44,7 @@ public class ItemController : ControllerBase
     }
     
     [HttpGet("{id}")]
-    [ProducesResponseType(typeof(ItemModel), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(ItemResponseViewModel), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     public async Task<IActionResult> GetItemById([FromRoute] int id)
     {

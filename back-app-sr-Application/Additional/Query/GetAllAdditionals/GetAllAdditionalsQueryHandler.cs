@@ -4,7 +4,7 @@ using MediatR;
 
 namespace back_app_sr_Application.Additional.Query.GetAllAdditionals;
 
-public class GetAllAdditionalsQueryHandler : IRequestHandler<GetAllAdditionalsQuery, IEnumerable<GetAdditionalViewModel>>
+public class GetAllAdditionalsQueryHandler : IRequestHandler<GetAllAdditionalsQuery, IEnumerable<AdditionalResponseViewModel>>
 {
     private readonly IAdditionalService _additionalService;
 
@@ -13,7 +13,7 @@ public class GetAllAdditionalsQueryHandler : IRequestHandler<GetAllAdditionalsQu
         _additionalService = additionalService;
     }
 
-    public async Task<IEnumerable<GetAdditionalViewModel>> Handle(GetAllAdditionalsQuery request,
+    public async Task<IEnumerable<AdditionalResponseViewModel>> Handle(GetAllAdditionalsQuery request,
         CancellationToken cancellationToken)
     {
         var result = await _additionalService.GetAllAdditionals();

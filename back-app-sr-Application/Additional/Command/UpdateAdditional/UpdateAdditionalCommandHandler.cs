@@ -5,7 +5,7 @@ using MediatR;
 
 namespace back_app_sr_Application.Additional.Command.UpdateAdditional;
 
-public class UpdateAdditionalCommandHandler : IRequestHandler<UpdateAdditionalCommand, UpdateAdditionalViewModel>
+public class UpdateAdditionalCommandHandler : IRequestHandler<UpdateAdditionalCommand, AdditionalResponseViewModel>
 {
     private readonly IAdditionalService _additionalService;
 
@@ -14,7 +14,7 @@ public class UpdateAdditionalCommandHandler : IRequestHandler<UpdateAdditionalCo
         _additionalService = additionalService;
     }
 
-    public async Task<UpdateAdditionalViewModel> Handle(UpdateAdditionalCommand request, CancellationToken cancellationToken)
+    public async Task<AdditionalResponseViewModel> Handle(UpdateAdditionalCommand request, CancellationToken cancellationToken)
     {
         var validator = new UpdateAdditionalValidator();
         var validation = await validator.ValidateAsync(request, cancellationToken);

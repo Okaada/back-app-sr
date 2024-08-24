@@ -4,6 +4,8 @@ using back_app_sr_Application.Additional.Command.DeleteAdditional;
 using back_app_sr_Application.Additional.Command.UpdateAdditional;
 using back_app_sr_Application.Additional.Query.GetAdditionalById;
 using back_app_sr_Application.Additional.Query.GetAllAdditionals;
+using back_app_sr_Application.Additional.ViewModel;
+using back_app_sr.WebApi.DTOs.Additional;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,17 +23,17 @@ public class AdditionalController : ControllerBase
     }
 
     [HttpPost]
-    [ProducesResponseType<int>((int)HttpStatusCode.Created)]
-    [ProducesResponseType<int>((int)HttpStatusCode.BadRequest)]
+    [ProducesResponseType(typeof(int), (int)HttpStatusCode.Created)]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest)]
     public async Task<IActionResult> CreateAdditional([FromBody] CreateAdditionalCommand createAdditionalRequest)
     {
         var result = await _mediator.Send(createAdditionalRequest);
-        return Created($"/api/additional/{result}", result);
+        return Created("/additional", result);
     }
 
     [HttpGet]
-    [ProducesResponseType<int>((int)HttpStatusCode.OK)]
-    [ProducesResponseType<int>((int)HttpStatusCode.NoContent)]
+    [ProducesResponseType(typeof(IEnumerable<AdditionalResponseViewModel>), (int)HttpStatusCode.OK)]
+    [ProducesResponseType((int)HttpStatusCode.NoContent)]
     public async Task<IActionResult> GetAllAdditionals()
     {
         var result = await _mediator.Send(new GetAllAdditionalsQuery());
@@ -42,40 +44,48 @@ public class AdditionalController : ControllerBase
     }
     
     [HttpGet("{id}")]
-    [ProducesResponseType<int>((int)HttpStatusCode.OK)]
-    [ProducesResponseType<int>((int)HttpStatusCode.NoContent)]
+    [ProducesResponseType(typeof(AdditionalResponseViewModel), (int)HttpStatusCode.OK)]
+    [ProducesResponseType((int)HttpStatusCode.NoContent)]
     public async Task<IActionResult> GetAdditionalById([FromRoute] int id)
     {
         var result = await _mediator.Send(new GetAdditionalByIdQuery {AdditionalId = id});
-        if (result == null)
+        if (result.AdditionalId == 0)
             return NoContent();
         
         return Ok(result);
     }
     
     [HttpPut("{id}")]
-    [ProducesResponseType((int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(AdditionalResponseViewModel), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    public async Task<IActionResult> UpdateAdditional([FromRoute] int id, [FromBody] UpdateAdditionalCommand updateAdditionalRequest)
+    public async Task<IActionResult> UpdateAdditional([FromRoute] int id, [FromBody] UpdateAdditionalDTO updateAdditionalRequest)
     {
-        if (id != updateAdditionalRequest.AdditionalId)
+        var updateAdditional = new UpdateAdditionalCommand
         {
-            return BadRequest("ID no URL não corresponde ao ID no corpo da requisição.");
-        }
+            AdditionalId = id,
+            Name = updateAdditionalRequest.Name,
+            Value = updateAdditionalRequest.Value
+        };
 
-        var result = await _mediator.Send(updateAdditionalRequest);
+        var result = await _mediator.Send(updateAdditional);
+
+        if (result.AdditionalId == 0)
+            return NoContent();
 
         return Ok(result);
     }
     
     [HttpDelete("{id}")]
-    [ProducesResponseType<int>((int)HttpStatusCode.NotFound)]
-    [ProducesResponseType<int>((int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(DeleteAdditionalViewModel), (int)HttpStatusCode.OK)]
+    [ProducesResponseType((int)HttpStatusCode.NotFound)]
     public async Task<IActionResult> DeleteAdditional([FromRoute] int id)
     {
         var result = await _mediator.Send(new DeleteAdditionalCommand { AdditionalId = id });
 
+        if (result.Name == null)
+            return NoContent();
+        
         return Ok(result);
     }
 }

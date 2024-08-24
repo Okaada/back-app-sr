@@ -6,7 +6,7 @@ using MediatR;
 
 namespace back_app_sr_Application.Additional.Query.GetAdditionalById;
 
-public class GetAdditionalByIdQueryHandler : IRequestHandler<GetAdditionalByIdQuery, GetAdditionalViewModel>
+public class GetAdditionalByIdQueryHandler : IRequestHandler<GetAdditionalByIdQuery, AdditionalResponseViewModel>
 {
     private readonly IAdditionalService _additionalService;
 
@@ -15,7 +15,7 @@ public class GetAdditionalByIdQueryHandler : IRequestHandler<GetAdditionalByIdQu
         _additionalService = additionalService;
     }
 
-    public async Task<GetAdditionalViewModel> Handle(GetAdditionalByIdQuery request, CancellationToken cancellationToken)
+    public async Task<AdditionalResponseViewModel> Handle(GetAdditionalByIdQuery request, CancellationToken cancellationToken)
     {
         var validator = new GetAdditionalByIdValidator();
         var validation = await validator.ValidateAsync(request, cancellationToken);

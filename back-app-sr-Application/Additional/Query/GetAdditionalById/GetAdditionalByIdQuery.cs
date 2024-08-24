@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace back_app_sr_Application.Additional.Query.GetAdditionalById;
 
-public class GetAdditionalByIdQuery : IRequest<GetAdditionalViewModel>
+public class GetAdditionalByIdQuery : IRequest<AdditionalResponseViewModel>
 {
     [JsonProperty("additional_id")]
     public int AdditionalId { get; set; }

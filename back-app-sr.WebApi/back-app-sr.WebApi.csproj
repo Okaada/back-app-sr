@@ -20,6 +20,7 @@
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.7.1" />
     </ItemGroup>
 
     <ItemGroup>
@@ -40,7 +41,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="DTOs\User\" />
       <Folder Include="Helpers\" />
     </ItemGroup>
 </Project>

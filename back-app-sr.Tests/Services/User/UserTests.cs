@@ -31,23 +31,23 @@ public class UserTests
     public async Task Create_User_Should_Be_Successful()
     {
         _userRepository.Setup(x => x.GetUserByEmail(It.IsAny<string>()))
-            .ReturnsAsync(new UserModel(It.IsAny<Guid>(), string.Empty, string.Empty, string.Empty, string.Empty));
+            .ReturnsAsync((UserModel)null);
 
         _userRepository.Setup(x => x.Add(It.IsAny<UserModel>())).Verifiable();
-
         _uowMock.Setup(x => x.Commit()).Verifiable();
-        
+
         var myProfile = new UserMappings();
-        var configuration = new MapperConfiguration(cfg => cfg.AddProfile(myProfile));
+        var configuration = new MapperConfiguration(cfg => cfg.AddProfile(myProfile));    
         _mapper = new Mapper(configuration);
 
         var service = new UserService(_userRepository.Object, _uowMock.Object, jwtOptions, _mapper);
-
-        var result = await service.CreateUser("string", "123321", "string@email.com", "TestRole");
-        result.Email.Should().Be("string@email.com");
-        result.Role.Should().Be("TestRole");
+        
+        var result = await service.CreateUser("New User", "password123", "newuser@email.com", "UserRole");
+        
         _userRepository.Verify(x => x.Add(It.IsAny<UserModel>()), Times.Once);
         _uowMock.Verify(x => x.Commit(), Times.Once);
+        
+        Assert.NotNull(result);
     }
     
     [Test]

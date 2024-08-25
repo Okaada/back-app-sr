@@ -48,7 +48,7 @@ public class ItemService : IItemService
     {
         var item = await _itemRepository.GetById(itemId);
         if (item == null)
-            return new ItemResponseViewModel();
+            throw new KeyNotFoundException($"Nenhum adicional encontrado com ID {itemId}");
 
         item.UpdateItem(name, value, description, isActive);
         

@@ -15,6 +15,6 @@ public class UserRepository : Repository<UserModel>, IUserRepository
     
     public Task<UserModel> GetUserByEmail(string email)
     {
-        return Task.FromResult(Context.Users.FirstOrDefault(x => x.Email == email) ?? throw new KeyNotFoundException());
+        return Task.FromResult(Context.Users.FirstOrDefault(x => x.Email == email));
     }
 }

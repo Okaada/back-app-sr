@@ -1,6 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Text.RegularExpressions;
 using AutoMapper;
 using back_app_sr_Application.User.DTO;
 using back_app_sr_Application.User.Service.Interface;
@@ -31,14 +32,18 @@ public class UserService : IUserService
 
     public async Task<UserCreationViewModel> CreateUser(string name, string password, string email, string role)
     {
+        if (!IsValidEmail(email))
+            throw new Exception("O email fornecido é invalido. Certifique-se de que ele está no formato correto. (email@email.com)");
+
         var existentUser = await _userRepository.GetUserByEmail(email);
-        if (!string.IsNullOrEmpty(existentUser.Email))
+        if (existentUser != null)
             throw new Exception("Email já utilizado");
 
         var user = new UserModel(Guid.NewGuid(), name, UserModel.HashPassword(password), role, email);
 
         await _userRepository.Add(user);
         _uow.Commit();
+
         return _mapper.Map<UserCreationViewModel>(user);
     }
 
@@ -115,5 +120,11 @@ public class UserService : IUserService
         });
 
         return tokenHandler.WriteToken(token);
+    }
+
+    private bool IsValidEmail(string email)
+    {
+        string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+        return Regex.IsMatch(email, pattern);
     }
 }

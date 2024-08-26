@@ -1,6 +1,8 @@
 using System.Text;
+using Amazon;
+using Amazon.SecretsManager;
+using Amazon.SecretsManager.Model;
 using back_app_sr_Application;
-using back_app_sr.Domain.Models;
 using back_app_sr.Domain.Options;
 using back_app_sr.Infra;
 using back_app_sr.WebApi.Middleware;
@@ -11,8 +13,27 @@ using Newtonsoft.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: true).AddEnvironmentVariables();
-builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
+    .AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: true)
+    .AddEnvironmentVariables();
+
+var jwtOptions = new JwtSettings();
+builder.Configuration.GetSection("JwtSettings").Bind(jwtOptions);
+
+#if !DEBUG
+string secretName = "prod/token-secret";
+string region = "us-east-1";
+IAmazonSecretsManager client = new AmazonSecretsManagerClient(RegionEndpoint.GetBySystemName(region));
+GetSecretValueRequest request = new GetSecretValueRequest
+
+{
+    SecretId = secretName,
+    VersionStage = "AWSCURRENT" 
+};
+GetSecretValueResponse response;
+response = await client.GetSecretValueAsync(request);
+jwtOptions.Secret = response.SecretString;
+#endif
+
 builder.Services.AddInfra(builder.Configuration);
 builder.Services.AddApplication();
 builder.Services.AddEndpointsApiExplorer();
@@ -46,21 +67,20 @@ builder.Services.AddSwaggerGen(swagger =>
                     Id = "Bearer"
                 }
             },
-            new string[] {}
-
+            new string[] { }
         }
     });
 });
 
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
-            {
-                options.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
-                options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
-                options.SerializerSettings.ContractResolver = new DefaultContractResolver
-                {
-                    NamingStrategy = new SnakeCaseNamingStrategy() // Isso respeita os atributos [JsonProperty]
-                };
-            });
+{
+    options.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
+    options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+    options.SerializerSettings.ContractResolver = new DefaultContractResolver
+    {
+        NamingStrategy = new SnakeCaseNamingStrategy()
+    };
+});
 
 builder.Services.AddSwaggerGenNewtonsoftSupport();
 
@@ -75,10 +95,10 @@ builder.Services.AddAuthentication
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
 
-            ValidIssuer = builder.Configuration["JwtSettings:Issuer"],
-            ValidAudience = builder.Configuration["JwtSettings:Audience"],
+            ValidIssuer = jwtOptions.Issuer,
+            ValidAudience = jwtOptions.Audience,
             IssuerSigningKey = new SymmetricSecurityKey
-                (Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Secret"] ?? string.Empty))
+                (Encoding.UTF8.GetBytes(jwtOptions.Secret))
         };
     });
 
@@ -98,5 +118,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 app.UseHttpsRedirection();
 app.Run();

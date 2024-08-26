@@ -20,13 +20,13 @@ public class UserService : IUserService
     private readonly JwtSettings _jwtSettings;
     private readonly IMapper _mapper;
 
-    public UserService(IUserRepository userRepository, IUnitOfWork uow, IOptions<JwtSettings> appSettings,
+    public UserService(IUserRepository userRepository, IUnitOfWork uow, IOptions<JwtSettings> jwtSettings,
         IMapper mapper)
     {
         _userRepository = userRepository;
         _uow = uow;
         _mapper = mapper;
-        _jwtSettings = appSettings.Value;
+        _jwtSettings = jwtSettings.Value;
     }
 
     public async Task<UserCreationViewModel> CreateUser(string name, string password, string email, string role)

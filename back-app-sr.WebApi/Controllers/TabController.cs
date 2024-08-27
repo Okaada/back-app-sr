@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace back_app_sr.WebApi.Controllers;
 
 [ApiController]
-[Authorize]
+// [Authorize]
 [Route("api/[controller]")]
 public class TabController : ControllerBase
 {

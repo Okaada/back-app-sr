@@ -1,9 +1,10 @@
+using back_app_sr_Application.Order.Command.CreateOrderItem;
 using back_app_sr_Application.Order.Service.Interface;
 using back_app_sr_Application.Order.ViewModel;
 using FluentValidation;
 using MediatR;
 
-namespace back_app_sr_Application.Order.Command;
+namespace back_app_sr_Application.Order.Command.CreateOrderItem;
 
 public class CreateOrderItemCommandHandler : IRequestHandler<CreateOrderItemCommand, OrderItemResponseViewModel>
 {

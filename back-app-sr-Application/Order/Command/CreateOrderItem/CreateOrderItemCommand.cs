@@ -2,7 +2,7 @@ using back_app_sr_Application.Order.ViewModel;
 using MediatR;
 using Newtonsoft.Json;
 
-namespace back_app_sr_Application.Order.Command;
+namespace back_app_sr_Application.Order.Command.CreateOrderItem;
 
 public class CreateOrderItemCommand : IRequest<OrderItemResponseViewModel>
 {

@@ -1,6 +1,7 @@
+using back_app_sr.Domain.Models.Tab;
+
 namespace back_app_sr.Infra.Repository.Interfaces;
 
-public class IOrderItemRepository
+public interface IOrderItemRepository : IRepository<OrderItemsTabModel>
 {
-    
 }

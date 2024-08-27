@@ -13,7 +13,7 @@ namespace back_app_sr.WebApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-// [Authorize(Roles = "admin")]
+[Authorize(Roles = "admin")]
 public class UserController : ControllerBase
 {
     private readonly IMediator _mediator;

@@ -32,17 +32,17 @@ public class UserTests
     {
         _userRepository.Setup(x => x.GetUserByEmail(It.IsAny<string>()))
             .ReturnsAsync(new UserModel(It.IsAny<Guid>(), string.Empty, string.Empty, string.Empty, string.Empty));
-
+    
         _userRepository.Setup(x => x.Add(It.IsAny<UserModel>())).Verifiable();
-
+    
         _uowMock.Setup(x => x.Commit()).Verifiable();
         
         var myProfile = new UserMappings();
         var configuration = new MapperConfiguration(cfg => cfg.AddProfile(myProfile));
         _mapper = new Mapper(configuration);
-
+    
         var service = new UserService(_userRepository.Object, _uowMock.Object, jwtOptions, _mapper);
-
+    
         var result = await service.CreateUser("string", "123321", "string@email.com", "TestRole");
         result.Email.Should().Be("string@email.com");
         result.Role.Should().Be("TestRole");

@@ -13,8 +13,8 @@ public class UserRepository : Repository<UserModel>, IUserRepository
         Context = context;
     }
     
-    public Task<UserModel> GetUserByEmail(string email)
+    public async Task<UserModel> GetUserByEmail(string email)
     {
-        return Task.FromResult(Context.Users.FirstOrDefault(x => x.Email == email) ?? throw new KeyNotFoundException());
+        return await Task.FromResult(Context.Users.FirstOrDefault(x => x.Email == email));
     }
 }

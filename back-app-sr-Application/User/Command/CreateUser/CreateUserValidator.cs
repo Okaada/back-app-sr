@@ -18,7 +18,9 @@ public class CreateUserValidator: AbstractValidator<CreateUserCommand>
 #else
         RuleFor(cmd => cmd.Password).NotEmpty();
 #endif
-        RuleFor(cmd => cmd.Email).NotEmpty();
+        RuleFor(cmd => cmd.Email)
+            .NotEmpty().WithMessage("O E-mail é obrigatório")
+            .EmailAddress().WithMessage("O E-mail deve estar no formato válido (email@email.com)");
         RuleFor(cmd => cmd.Username).NotEmpty();
         RuleFor(cmd => cmd.Role).NotEmpty();
     }

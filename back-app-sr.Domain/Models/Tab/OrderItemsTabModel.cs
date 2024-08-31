@@ -11,6 +11,6 @@ public class OrderItemsTabModel
     {
         TabId = tabId;
         ItemId = itemId;
-        Quantity = Quantity;
+        Quantity = quantity;
     }
 }

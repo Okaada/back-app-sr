@@ -88,15 +88,33 @@ builder.Services.AddAuthorizationBuilder()
     .AddPolicy("Admin", policy => policy.RequireRole("admin"))
     .AddPolicy("User", policy => policy.RequireRole("user"));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:3000") 
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
+
 var app = builder.Build();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseMiddleware<JwtResolver>();
 app.MapControllers();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors(corsPolicyBuilder =>
+{
+    corsPolicyBuilder.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+});
 app.UseHttpsRedirection();
 app.Run();
